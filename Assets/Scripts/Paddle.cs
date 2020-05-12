@@ -7,7 +7,7 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     private float paddleYPosition = 1f;
     [SerializeField]
-    private float minX = 1.3f;
+    private float minX = 1.4f;
     [SerializeField]
     private float maxX= 20f;
 
