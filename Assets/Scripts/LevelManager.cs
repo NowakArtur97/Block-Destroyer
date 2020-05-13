@@ -7,6 +7,19 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        int numberOfLevelManagers = FindObjectsOfType<LevelManager>().Length;
+
+        if (numberOfLevelManagers > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
