@@ -18,7 +18,7 @@ TagManager:
   - Block
   - Paddle
   - Ball
-  - 
+  - Particles
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Ball
     uniqueID: 15832919
+    locked: 0
+  - name: Particles
+    uniqueID: 2462358247
     locked: 0
