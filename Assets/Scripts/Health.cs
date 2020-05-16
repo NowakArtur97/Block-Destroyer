@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<GameSession>().BlockDestroyed();
         Destroy(gameObject);
     }
 
