@@ -481,6 +481,18 @@ PolygonCollider2D:
       - {x: -1.28, y: -0.32}
       - {x: 1.28, y: -0.32}
       - {x: 1.276289, y: -0.019688308}
+--- !u!114 &792801564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 210697111313395796, guid: 1b4e32b4f46f70041a0dec95d84c7744,
+    type: 3}
+  m_PrefabInstance: {fileID: 210697111736942920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792801561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2665734a72a824e9092f1d8c33bd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &821005433
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,12 +920,12 @@ SpriteRenderer:
   m_SortingLayerID: 15832919
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 274f77b3a89439448a724bb97b4cbd0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ab84f9536496e847aaf1512384745c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 0.4, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -982,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8950272d7c63aa478e6cba2d921721e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPaddle: {fileID: 0}
+  mainPaddle: {fileID: 792801564}
   xPush: 0
   yPush: 15
   sounds:
