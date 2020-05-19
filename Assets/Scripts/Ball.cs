@@ -2,6 +2,8 @@
 
 public class Ball : MonoBehaviour
 {
+    private const string BURNING_ANIMATION_STATE = "IsBurning";
+
     [SerializeField]
     private Paddle mainPaddle;
     [SerializeField]
@@ -14,6 +16,8 @@ public class Ball : MonoBehaviour
     private Vector2 ballStartingPos;
     private bool gameHasStarted = false;
 
+    private Animator animator;
+
     private AudioSource audioSource;
 
     private void Start()
@@ -21,6 +25,8 @@ public class Ball : MonoBehaviour
         ballStartingPos = new Vector2(transform.position.x, transform.position.y);
 
         audioSource = GetComponent<AudioSource>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,7 +60,14 @@ public class Ball : MonoBehaviour
         if (gameHasStarted)
         {
             PlayRandomSound();
+            Burn();
         }
+    }
+
+    private void Burn()
+    {
+        bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
+        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
     }
 
     private void PlayRandomSound()
