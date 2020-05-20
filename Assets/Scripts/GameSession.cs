@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class GameSession : MonoBehaviour
 {
+    [SerializeField]
+    private bool isAutoPlayEnabled = false;
+
+    private bool gameHasStarted = false;
+
     private int numberOfBreakableBlocks;
 
     public void CountBlocks()
@@ -28,5 +33,20 @@ public class GameSession : MonoBehaviour
     private bool IsGameAWin()
     {
         return numberOfBreakableBlocks <= 0;
+    }
+
+    public bool IsAutoPlayEnabled()
+    {
+        return isAutoPlayEnabled;
+    }
+
+    public bool HasGameStarted()
+    {
+        return gameHasStarted;
+    }
+
+    public void SetGameHasStarted(bool gameHasStarted)
+    {
+        this.gameHasStarted = gameHasStarted;
     }
 }

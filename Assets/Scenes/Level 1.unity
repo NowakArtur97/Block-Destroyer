@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8b741809e415141a064ab116cd2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAutoPlayEnabled: 1
 --- !u!4 &158271399
 Transform:
   m_ObjectHideFlags: 0
@@ -1046,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainPaddle: {fileID: 792801564}
-  xPush: 0
+  xPush: 1
   yPush: 15
   sounds:
   - {fileID: 8300000, guid: 6f6a195723f717741adcb9ecb6e2e93f, type: 3}

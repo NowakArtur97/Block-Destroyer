@@ -7,31 +7,38 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private Paddle mainPaddle;
     [SerializeField]
-    private float xPush = 0f;
+    private float xPush = 1f;
     [SerializeField]
     private float yPush = 15f;
     [SerializeField]
     private AudioClip[] sounds;
 
-    private Vector2 ballStartingPos;
-    private bool gameHasStarted = false;
+    private Vector2 ballStartingPosition;
 
     private Animator animator;
-
     private AudioSource audioSource;
+    private Rigidbody2D rigidbody2D;
+    private SpriteRenderer spriteRenderer;
+    private GameSession gameSession;
 
     private void Start()
     {
-        ballStartingPos = new Vector2(transform.position.x, transform.position.y);
+        ballStartingPosition = new Vector2(transform.position.x, transform.position.y);
 
         audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
+
+        rigidbody2D = GetComponent<Rigidbody2D>();
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     void Update()
     {
-        if (!gameHasStarted)
+        if (!gameSession.HasGameStarted())
         {
             LockBallToPaddle();
             LaunchBall();
@@ -42,7 +49,7 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            gameHasStarted = true;
+            gameSession.SetGameHasStarted(true);
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
         }
@@ -50,15 +57,17 @@ public class Ball : MonoBehaviour
 
     private void LockBallToPaddle()
     {
-        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, ballStartingPos.y);
+        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, ballStartingPosition.y);
 
         transform.position = paddlePos;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameHasStarted)
+        if (gameSession.HasGameStarted())
         {
+            animator.SetBool(BURNING_ANIMATION_STATE, true);
+
             PlayRandomSound();
             Burn();
         }
@@ -66,8 +75,15 @@ public class Ball : MonoBehaviour
 
     private void Burn()
     {
-        bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
-        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
+        //bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
+        //animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
+
+        Vector2 moveDirection = rigidbody2D.velocity;
+        if (moveDirection != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void PlayRandomSound()
