@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - Paddle
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Paddle
   - Ball
   - Particles
-  - 
+  - PowerUp
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Particles
     uniqueID: 2462358247
+    locked: 0
+  - name: PowerUp
+    uniqueID: 640117927
     locked: 0

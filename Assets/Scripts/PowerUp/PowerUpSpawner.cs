@@ -7,6 +7,16 @@ public class PowerUpSpawner : MonoBehaviour
     private float minSpawnDelay = 5f;
     [SerializeField]
     private float maxSpawnDelay = 10f;
+    [SerializeField]
+    private float minSpawnXPosition = 1f;
+    [SerializeField]
+    private float maxSpawnXPosition = 20f;
+    [SerializeField]
+    private float minSpawnYPosition = 5f;
+    [SerializeField]
+    private float maxSpawnYPosition = 10f;
+    [SerializeField]
+    private PowerUp powerUp;
 
     private bool isSpawning = false;
 
@@ -38,6 +48,8 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Debug.Log("Time to spawn");
+        Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
+
+        Instantiate(powerUp, powerUpPosition, Quaternion.identity);
     }
 }
