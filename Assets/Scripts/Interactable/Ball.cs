@@ -21,6 +21,8 @@ public class Ball : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameSession gameSession;
 
+    private GameObject child;
+
     private void Start()
     {
         ballStartingPosition = new Vector2(transform.position.x, transform.position.y);
@@ -34,6 +36,8 @@ public class Ball : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         gameSession = FindObjectOfType<GameSession>();
+
+        child = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -66,24 +70,20 @@ public class Ball : MonoBehaviour
     {
         if (gameSession.HasGameStarted())
         {
-            animator.SetBool(BURNING_ANIMATION_STATE, true);
-
             PlayRandomSound();
-            Burn();
+            Burn(collision);
         }
     }
 
-    private void Burn()
+    private void Burn(Collision2D target)
     {
-        //bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
-        //animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
+        Vector3 contactPoint = target.contacts[0].point;
 
-        Vector2 moveDirection = rigidbody2D.velocity;
-        if (moveDirection != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
+        bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
+        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
+
+        Vector3 direction = contactPoint - child.transform.position;
+        child.transform.up = direction;
     }
 
     private void PlayRandomSound()

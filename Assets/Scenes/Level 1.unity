@@ -1089,6 +1089,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5646853358821890209, guid: fbc460b336c1a1d47bf36eab50cfc999,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5646853359208604339, guid: fbc460b336c1a1d47bf36eab50cfc999,
         type: 3}
       propertyPath: mainPaddle
@@ -1296,6 +1301,11 @@ PrefabInstance:
     - target: {fileID: 7212029861874192344, guid: 508b68739ca278945ba78e2ff55cdded,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212029861874192345, guid: 508b68739ca278945ba78e2ff55cdded,
+        type: 3}
+      propertyPath: isAutoPlayEnabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7212029861874192346, guid: 508b68739ca278945ba78e2ff55cdded,
