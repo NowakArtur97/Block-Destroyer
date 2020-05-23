@@ -14,9 +14,9 @@ public class Crack : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void CrackObject(float damage)
+    public void CrackObject()
     {
-        int healthLeft = (int)(health.GetHealth() - damage);
+        int healthLeft = (int)health.GetHealth() - 1;
 
         spriteRenderer.sprite = hitSprites[healthLeft];
     }

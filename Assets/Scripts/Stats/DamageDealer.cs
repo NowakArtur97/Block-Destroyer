@@ -5,10 +5,17 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField]
     private float damageDealt = 1f;
+    [SerializeField]
+    private float defaultDamageDealt = 1f;
 
     public void SetDamage(float damageDealt)
     {
         this.damageDealt = damageDealt;
+    }
+
+    public void ResetDamage()
+    {
+        damageDealt = defaultDamageDealt;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,13 +32,13 @@ public class DamageDealer : MonoBehaviour
 
         block.GetComponent<Health>().DealDamage(damageDealt);
 
-        if (!block.GetComponent<Health>().IsDead())
+        if (block.GetComponent<Health>().IsDead())
         {
-            block.GetComponent<Crack>().CrackObject(damageDealt);
+            block.GetComponent<Health>().Die();
         }
         else
         {
-            block.GetComponent<Health>().Die();
+            block.GetComponent<Crack>().CrackObject();
         }
     }
 }

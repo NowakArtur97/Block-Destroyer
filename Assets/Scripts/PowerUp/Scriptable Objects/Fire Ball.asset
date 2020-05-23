@@ -15,4 +15,4 @@ MonoBehaviour:
   type: 0
   sprite: {fileID: 21300000, guid: 06748bdc2626bc641ba0b9f10c7eaeff, type: 3}
   value: 2
-  duration: 30
+  duration: 3

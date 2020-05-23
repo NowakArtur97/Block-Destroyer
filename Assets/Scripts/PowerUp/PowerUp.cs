@@ -32,14 +32,12 @@ public class PowerUp : MonoBehaviour
 
     private IEnumerator Pickup()
     {
-        Debug.Log("Pickup");
         switch (power.type)
         {
             case PowerType.ATTACK:
-                Debug.Log("Attack");
                 damageDealer.SetDamage(power.value);
                 yield return new WaitForSecondsRealtime(power.duration);
-                damageDealer.SetDamage(-power.value);
+                damageDealer.ResetDamage();
                 break;
             case PowerType.HEALTH:
                 break;
@@ -51,6 +49,6 @@ public class PowerUp : MonoBehaviour
                 throw new NotImplementedException();
         }
 
-        Destroy(gameObject, 10);
+        Destroy(gameObject, 1);
     }
 }
