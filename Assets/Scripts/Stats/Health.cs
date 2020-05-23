@@ -3,7 +3,7 @@
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private float health = 4;
+    private float health = 3;
 
     public void DealDamage(float damage)
     {
@@ -15,15 +15,7 @@ public class Health : MonoBehaviour
         return health;
     }
 
-    private void Update()
-    {
-        if (IsDead())
-        {
-            Die();
-        }
-    }
-
-    private void Die()
+    public void Die()
     {
         FindObjectOfType<GameSession>().BlockDestroyed();
         Destroy(gameObject);

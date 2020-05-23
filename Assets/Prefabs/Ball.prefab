@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5646853359208604350}
   - component: {fileID: 5646853359208604339}
+  - component: {fileID: 9135798961667365728}
   - component: {fileID: 5646853359208604348}
   - component: {fileID: 5646853359208604349}
   - component: {fileID: 5646853359208604338}
@@ -134,6 +135,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f6a195723f717741adcb9ecb6e2e93f, type: 3}
   - {fileID: 8300000, guid: 7ea799fc4b5887042a2e75dbd4f30969, type: 3}
   - {fileID: 8300000, guid: 42fc26755f1660e498373ec0d6d610d5, type: 3}
+--- !u!114 &9135798961667365728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646853359208604344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5282afbce9930e148906f50d11b46ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
 --- !u!50 &5646853359208604348
 Rigidbody2D:
   serializedVersion: 4
@@ -149,7 +163,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 3d57ea0c23d402f4ea9c88efb2bcd3d6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1

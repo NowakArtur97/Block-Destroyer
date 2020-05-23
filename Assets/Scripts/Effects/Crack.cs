@@ -4,32 +4,20 @@ public class Crack : MonoBehaviour
 {
     [SerializeField]
     private Sprite[] hitSprites;
-    [SerializeField]
-    private float damageDealtOnCollision = 1f;
 
     private Health health;
     private SpriteRenderer spriteRenderer;
 
-    void Start()
+    private void Start()
     {
         health = GetComponent<Health>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void CrackObject(float damage)
     {
-        health.DealDamage(damageDealtOnCollision);
+        int healthLeft = (int)(health.GetHealth() - damage);
 
-        CrackObject();
-    }
-
-    private void CrackObject()
-    {
-        int healtLeft = (int)health.GetHealth() - 1;
-
-        if (!health.IsDead())
-        {
-            spriteRenderer.sprite = hitSprites[healtLeft];
-        }
+        spriteRenderer.sprite = hitSprites[healthLeft];
     }
 }
