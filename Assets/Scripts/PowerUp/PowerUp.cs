@@ -1,11 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    private Ball ball;
+
+    private void Start()
+    {
+        ball = FindObjectOfType<Ball>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Paddle"))
+        if (collision.CompareTag("Paddle"))
         {
             Pickup();
         }
