@@ -36,7 +36,9 @@ public class PowerUp : MonoBehaviour
         {
             case PowerType.ATTACK:
                 damageDealer.SetDamage(power.value);
+                ball.ToggleBurning();
                 yield return new WaitForSecondsRealtime(power.duration);
+                ball.ToggleBurning();
                 damageDealer.ResetDamage();
                 break;
             case PowerType.HEALTH:

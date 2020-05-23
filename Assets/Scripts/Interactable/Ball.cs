@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     private GameSession gameSession;
 
     private GameObject child;
+    private bool isBurning = false;
 
     private void Start()
     {
@@ -71,19 +72,25 @@ public class Ball : MonoBehaviour
         if (gameSession.HasGameStarted())
         {
             PlayRandomSound();
-            Burn(collision);
+
+            if (isBurning)
+            {
+                TurnOtherWayToCollision(collision);
+            }
         }
     }
 
-    private void Burn(Collision2D target)
+    private void TurnOtherWayToCollision(Collision2D collision)
     {
-        Vector3 contactPoint = target.contacts[0].point;
-
-        bool isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
-        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
-
+        Vector3 contactPoint = collision.contacts[0].point;
         Vector3 direction = contactPoint - child.transform.position;
         child.transform.up = direction;
+    }
+
+    public void ToggleBurning()
+    {
+        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
+        isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
     }
 
     private void PlayRandomSound()
