@@ -8,4 +8,6 @@ public class Power : ScriptableObject
     public Sprite sprite;
 
     public float value;
+
+    public float duration;
 }

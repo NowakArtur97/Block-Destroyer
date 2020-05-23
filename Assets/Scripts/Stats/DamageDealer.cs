@@ -6,6 +6,11 @@ public class DamageDealer : MonoBehaviour
     [SerializeField]
     private float damageDealt = 1f;
 
+    public void SetDamage(float damageDealt)
+    {
+        this.damageDealt = damageDealt;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Block"))

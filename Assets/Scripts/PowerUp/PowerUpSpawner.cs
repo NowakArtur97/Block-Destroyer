@@ -48,8 +48,8 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        //Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
+        Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
 
-        //Instantiate(powerUp, powerUpPosition, Quaternion.identity);
+        Instantiate(powerUp, powerUpPosition, Quaternion.identity);
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
@@ -6,12 +8,14 @@ public class PowerUp : MonoBehaviour
     private Power power;
 
     private SpriteRenderer spriteRenderer;
-
     private Ball ball;
+    private DamageDealer damageDealer;
 
     private void Start()
     {
         ball = FindObjectOfType<Ball>();
+
+        damageDealer = ball.GetComponent<DamageDealer>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -22,12 +26,31 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Paddle"))
         {
-            Pickup();
+            StartCoroutine(Pickup());
         }
     }
 
-    private void Pickup()
+    private IEnumerator Pickup()
     {
+        Debug.Log("Pickup");
+        switch (power.type)
+        {
+            case PowerType.ATTACK:
+                Debug.Log("Attack");
+                damageDealer.SetDamage(power.value);
+                yield return new WaitForSecondsRealtime(power.duration);
+                damageDealer.SetDamage(-power.value);
+                break;
+            case PowerType.HEALTH:
+                break;
+            case PowerType.SIZE:
+                break;
+            case PowerType.SPEED:
+                break;
+            default:
+                throw new NotImplementedException();
+        }
 
+        Destroy(gameObject, 10);
     }
 }

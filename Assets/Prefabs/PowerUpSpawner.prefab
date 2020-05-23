@@ -45,3 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnDelay: 1
   maxSpawnDelay: 5
+  minSpawnXPosition: 1
+  maxSpawnXPosition: 20
+  minSpawnYPosition: 5
+  maxSpawnYPosition: 10
+  powerUp: {fileID: 2442008734852851712, guid: fb3e74ba8a65512449065b1502f8a8ca, type: 3}
