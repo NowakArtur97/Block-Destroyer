@@ -4,6 +4,8 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     [SerializeField]
+    private float destroyNewPowerUpDelay = 10f;
+    [SerializeField]
     private float minSpawnDelay = 5f;
     [SerializeField]
     private float maxSpawnDelay = 10f;
@@ -50,6 +52,8 @@ public class PowerUpSpawner : MonoBehaviour
     {
         Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
 
-        Instantiate(powerUp, powerUpPosition, Quaternion.identity);
+        PowerUp newPowerUp = Instantiate(powerUp, powerUpPosition, Quaternion.identity) as PowerUp;
+
+        Destroy(newPowerUp.gameObject, destroyNewPowerUpDelay);
     }
 }
