@@ -8,6 +8,7 @@ TagManager:
   - Paddle
   - PowerUp
   - Block
+  - Lose Collider
   layers:
   - Default
   - TransparentFX

@@ -9,10 +9,6 @@ public class PowerUp : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private bool isBurning = false;
-
-    private Coroutine coroutine;
-
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();

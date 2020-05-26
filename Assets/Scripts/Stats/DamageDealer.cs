@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
@@ -22,19 +21,39 @@ public class DamageDealer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Block"))
         {
-            AttackBlock(collision);
+            AttackBlock(collision.gameObject);
         }
     }
 
-    private void AttackBlock(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject block = collision.gameObject;
-
-        block.GetComponent<Health>().DealDamage(damageDealt);
-
-        if (block.GetComponent<Health>().IsDead())
+        if (collision.gameObject.CompareTag("Lose Collider"))
         {
-            block.GetComponent<Health>().Die();
+            SubtractPlayerHealth();
+        }
+    }
+
+    private void SubtractPlayerHealth()
+    {
+        Health playerHealth = FindObjectOfType<Paddle>().GetComponent<Health>();
+
+        playerHealth.DealDamage(damageDealt);
+
+        if (playerHealth.IsDead())
+        {
+            FindObjectOfType<LevelManager>().RestartLevel();
+        }
+    }
+
+    private void AttackBlock(GameObject block)
+    {
+        Health blockHealth = block.GetComponent<Health>();
+
+        blockHealth.DealDamage(damageDealt);
+
+        if (blockHealth.IsDead())
+        {
+            blockHealth.Die();
         }
         else
         {

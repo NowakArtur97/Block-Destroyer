@@ -49,13 +49,14 @@ public class Ball : MonoBehaviour
 
     private void LaunchBall()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (WassMouseButtonClicked())
         {
             gameSession.SetGameHasStarted(true);
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
         }
     }
+
 
     private void LockBallToPaddle()
     {
@@ -70,7 +71,7 @@ public class Ball : MonoBehaviour
         {
             PlayRandomSound();
 
-            if (animator.GetBool(BURNING_ANIMATION_STATE))
+            if (IsBalBurning())
             {
                 TurnOtherWayToCollision(collision);
             }
@@ -86,12 +87,22 @@ public class Ball : MonoBehaviour
 
     public void ToggleBurning()
     {
-        animator.SetBool(BURNING_ANIMATION_STATE, !animator.GetBool(BURNING_ANIMATION_STATE));
+        animator.SetBool(BURNING_ANIMATION_STATE, !IsBalBurning());
     }
 
     private void PlayRandomSound()
     {
         AudioClip randomSound = sounds[Random.Range(0, sounds.Length)];
         audioSource.PlayOneShot(randomSound);
+    }
+
+    private bool IsBalBurning()
+    {
+        return animator.GetBool(BURNING_ANIMATION_STATE);
+    }
+
+    private static bool WassMouseButtonClicked()
+    {
+        return Input.GetMouseButtonDown(0);
     }
 }

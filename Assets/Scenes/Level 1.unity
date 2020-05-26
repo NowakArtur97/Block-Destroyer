@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &355377106
 Transform:
   m_ObjectHideFlags: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 210697111736942920}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1587417068}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f2665734a72a824e9092f1d8c33bd1d, type: 3}
@@ -888,9 +888,10 @@ GameObject:
   - component: {fileID: 1159103492}
   - component: {fileID: 1159103491}
   - component: {fileID: 1159103493}
+  - component: {fileID: 1159103494}
   m_Layer: 0
   m_Name: Lose Collider
-  m_TagString: Untagged
+  m_TagString: Lose Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,6 +948,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caee4ba552999f247ae4142c8c9709c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDealtToPlayer: 1
+--- !u!114 &1159103494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159103490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5282afbce9930e148906f50d11b46ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
+  defaultDamageDealt: 1
 --- !u!1001 &1184060219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1359,6 +1375,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e8b6ee61e6868144b3886537fc92a2a, type: 3}
+--- !u!1 &1587417068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 210697111313395793, guid: 1b4e32b4f46f70041a0dec95d84c7744,
+    type: 3}
+  m_PrefabInstance: {fileID: 210697111736942920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1587417072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587417068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8187b8046875be4c8a56b8a54a23395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1001 &1600329654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,11 +1993,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 5646853359208604349, guid: fbc460b336c1a1d47bf36eab50cfc999,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5646853359208604350, guid: fbc460b336c1a1d47bf36eab50cfc999,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2179,6 +2209,12 @@ PrefabInstance:
       propertyPath: isAutoPlayEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7212029861874192345, guid: 508b68739ca278945ba78e2ff55cdded,
+        type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 5646853359208604339, guid: fbc460b336c1a1d47bf36eab50cfc999,
+        type: 3}
     - target: {fileID: 7212029861874192346, guid: 508b68739ca278945ba78e2ff55cdded,
         type: 3}
       propertyPath: m_Name

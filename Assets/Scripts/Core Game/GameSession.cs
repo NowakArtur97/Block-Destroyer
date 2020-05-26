@@ -8,19 +8,20 @@ public class GameSession : MonoBehaviour
     [SerializeField]
     private Ball ball;
 
+    private LevelManager levelManager;
+
     private bool gameHasStarted = false;
 
     private int numberOfBreakableBlocks;
 
-    public void CountBlocks()
+    private void Start()
     {
-        numberOfBreakableBlocks++;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
-    public void BlockDestroyed()
-    {
-        numberOfBreakableBlocks--;
-    }
+    public void CountBlocks() => numberOfBreakableBlocks++;
+
+    public void BlockDestroyed() => numberOfBreakableBlocks--;
 
     private void Update()
     {
@@ -28,7 +29,7 @@ public class GameSession : MonoBehaviour
         {
             Debug.Log("Load Next Level");
             throw new NotImplementedException("Add after creating more levels");
-            //FindObjectOfType<LevelManager>().LoadNextLevel();
+            //levelManager.LoadNextLevel();
         }
     }
 
@@ -39,23 +40,11 @@ public class GameSession : MonoBehaviour
         Instantiate(ball, new Vector3(1, 1, 0), Quaternion.identity);
     }
 
-    private bool IsGameAWin()
-    {
-        return numberOfBreakableBlocks <= 0;
-    }
+    private bool IsGameAWin() => numberOfBreakableBlocks <= 0;
 
-    public bool IsAutoPlayEnabled()
-    {
-        return isAutoPlayEnabled;
-    }
+    public bool IsAutoPlayEnabled() => isAutoPlayEnabled;
 
-    public bool HasGameStarted()
-    {
-        return gameHasStarted;
-    }
+    public bool HasGameStarted() => gameHasStarted;
 
-    public void SetGameHasStarted(bool gameHasStarted)
-    {
-        this.gameHasStarted = gameHasStarted;
-    }
+    public void SetGameHasStarted(bool gameHasStarted) => this.gameHasStarted = gameHasStarted;
 }

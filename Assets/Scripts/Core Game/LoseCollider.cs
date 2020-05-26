@@ -3,16 +3,12 @@
 public class LoseCollider : MonoBehaviour
 {
     [SerializeField]
-    private float damageDealt = 1f;
-
-    private Health playerHealth;
+    private float damageDealtToPlayer = 1f;
 
     private GameSession gameSession;
 
     private void Start()
     {
-        playerHealth = FindObjectOfType<Paddle>().GetComponent<Health>();
-
         gameSession = FindObjectOfType<GameSession>();
     }
 
@@ -20,11 +16,14 @@ public class LoseCollider : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Ball"))
         {
-            gameSession.RestartGame();
-
-            playerHealth.DealDamage(damageDealt);
-
-            Destroy(collision.gameObject);
+            RestartAndSpawnBall(collision);
         }
+    }
+
+    private void RestartAndSpawnBall(Collider2D collision)
+    {
+        gameSession.RestartGame();
+
+        Destroy(collision.gameObject);
     }
 }

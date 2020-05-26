@@ -19,14 +19,10 @@ public class LevelManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void LoadNextLevel()
-    {
-        SceneManager.LoadScene(++currentSceneIndex);
-    }
+    public void LoadNextLevel() => SceneManager.LoadScene(++currentSceneIndex);
 
     public void RestartLevel()
     {
