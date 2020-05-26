@@ -41,19 +41,29 @@ public class PowerUp : MonoBehaviour
                 yield return ActivateSizeTypePowerUp();
                 break;
             case PowerType.SPEED:
+                yield return ActivateSpeedTypePowerUp();
                 break;
             default:
                 throw new NotImplementedException();
         }
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator ActivateSpeedTypePowerUp()
+    {
+        Ball ball = FindObjectOfType<Ball>();
+
+        ball.GetComponent<Rigidbody2D>().velocity *= power.value;
+
+        yield return new WaitForSecondsRealtime(power.duration);
+
+        ball.GetComponent<Rigidbody2D>().velocity /= power.value;
     }
 
     private IEnumerator ActivateSizeTypePowerUp()
     {
         Paddle paddle = FindObjectOfType<Paddle>();
-
-        SpriteRenderer paddleSpriteRenderer = paddle.GetComponent<SpriteRenderer>();
 
         paddle.Scale(power.value);
 

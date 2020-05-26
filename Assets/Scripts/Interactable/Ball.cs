@@ -17,7 +17,6 @@ public class Ball : MonoBehaviour
 
     private Animator animator;
     private AudioSource audioSource;
-    private SpriteRenderer spriteRenderer;
     private GameSession gameSession;
 
     private GameObject child;
@@ -29,8 +28,6 @@ public class Ball : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
-
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         gameSession = FindObjectOfType<GameSession>();
 
