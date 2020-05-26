@@ -55,11 +55,11 @@ public class PowerUp : MonoBehaviour
 
         SpriteRenderer paddleSpriteRenderer = paddle.GetComponent<SpriteRenderer>();
 
-        paddle.transform.localScale = new Vector3(power.value, power.value, power.value);
+        paddle.Scale(power.value);
 
         yield return new WaitForSecondsRealtime(power.duration);
 
-        paddle.transform.localScale = new Vector3(1, 1, 1);
+        paddle.Scale(1);
     }
 
     private IEnumerator ActivatePowerTypePowerUp()

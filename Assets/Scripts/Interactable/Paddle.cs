@@ -17,7 +17,19 @@ public class Paddle : MonoBehaviour
     {
         gameSession = FindObjectOfType<GameSession>();
 
-        ball = FindObjectOfType<Ball>();
+        CalculatePaddleMinAndMaxPosition();
+
+        if (gameSession.IsAutoPlayEnabled())
+        {
+            ball = FindObjectOfType<Ball>();
+        }
+    }
+
+    private void CalculatePaddleMinAndMaxPosition()
+    {
+        minX = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+
+        maxX = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)).x - minX;
     }
 
     private void Update()
@@ -39,5 +51,12 @@ public class Paddle : MonoBehaviour
         {
             return paddlePosition.x;
         }
+    }
+
+    internal void Scale(float scale)
+    {
+        transform.localScale = new Vector3(scale, scale, scale);
+
+        CalculatePaddleMinAndMaxPosition();
     }
 }
