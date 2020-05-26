@@ -17,12 +17,10 @@ public class Ball : MonoBehaviour
 
     private Animator animator;
     private AudioSource audioSource;
-    private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private GameSession gameSession;
 
     private GameObject child;
-    private bool isBurning = false;
 
     private void Start()
     {
@@ -31,8 +29,6 @@ public class Ball : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
-
-        rigidbody2D = GetComponent<Rigidbody2D>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -73,7 +69,7 @@ public class Ball : MonoBehaviour
         {
             PlayRandomSound();
 
-            if (isBurning)
+            if (animator.GetBool(BURNING_ANIMATION_STATE))
             {
                 TurnOtherWayToCollision(collision);
             }
@@ -89,8 +85,7 @@ public class Ball : MonoBehaviour
 
     public void ToggleBurning()
     {
-        animator.SetBool(BURNING_ANIMATION_STATE, !isBurning);
-        isBurning = animator.GetBool(BURNING_ANIMATION_STATE);
+        animator.SetBool(BURNING_ANIMATION_STATE, !animator.GetBool(BURNING_ANIMATION_STATE));
     }
 
     private void PlayRandomSound()

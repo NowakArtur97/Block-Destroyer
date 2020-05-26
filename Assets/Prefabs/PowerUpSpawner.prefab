@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577ac71acc7a9f546884d555618fcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnDelay: 1
-  maxSpawnDelay: 5
+  destroyNewPowerUpDelay: 10
+  minSpawnDelay: 6
+  maxSpawnDelay: 8
   minSpawnXPosition: 1
   maxSpawnXPosition: 20
   minSpawnYPosition: 5

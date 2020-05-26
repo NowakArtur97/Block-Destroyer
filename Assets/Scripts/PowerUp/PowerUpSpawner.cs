@@ -6,9 +6,9 @@ public class PowerUpSpawner : MonoBehaviour
     [SerializeField]
     private float destroyNewPowerUpDelay = 10f;
     [SerializeField]
-    private float minSpawnDelay = 5f;
+    private float minSpawnDelay = 6f;
     [SerializeField]
-    private float maxSpawnDelay = 10f;
+    private float maxSpawnDelay = 8f;
     [SerializeField]
     private float minSpawnXPosition = 1f;
     [SerializeField]

@@ -11,6 +11,10 @@ public class PowerUp : MonoBehaviour
     private Ball ball;
     private DamageDealer damageDealer;
 
+    private bool isBurning = false;
+
+    private Coroutine coroutine;
+
     private void Start()
     {
         ball = FindObjectOfType<Ball>();
@@ -35,11 +39,7 @@ public class PowerUp : MonoBehaviour
         switch (power.type)
         {
             case PowerType.ATTACK:
-                damageDealer.SetDamage(power.value);
-                ball.ToggleBurning();
-                yield return new WaitForSecondsRealtime(power.duration);
-                ball.ToggleBurning();
-                damageDealer.ResetDamage();
+                yield return ActivatePowerTypePowerUp();
                 break;
             case PowerType.HEALTH:
                 break;
@@ -52,5 +52,14 @@ public class PowerUp : MonoBehaviour
         }
 
         Destroy(gameObject, 1);
+    }
+
+    private IEnumerator ActivatePowerTypePowerUp()
+    {
+        damageDealer.SetDamage(power.value);
+        ball.ToggleBurning();
+        yield return new WaitForSecondsRealtime(power.duration);
+        ball.ToggleBurning();
+        damageDealer.ResetDamage();
     }
 }
