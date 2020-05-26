@@ -1675,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 210697111313395793, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}
       propertyPath: m_Name
-      value: PaddleStart
+      value: Paddle Start
       objectReference: {fileID: 0}
     - target: {fileID: 210697111313395797, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}
@@ -2082,10 +2082,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
+        type: 3}
+      propertyPath: powerUps.Array.data[1]
+      value: 
+      objectReference: {fileID: 2442008734852851712, guid: 4ea1bc8557b288746a3d53a5598ea29b,
+        type: 3}
+    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
+        type: 3}
+      propertyPath: powerUps.Array.data[0]
+      value: 
+      objectReference: {fileID: 2442008734852851712, guid: fb3e74ba8a65512449065b1502f8a8ca,
+        type: 3}
     - target: {fileID: 6270644950168612502, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
         type: 3}
       propertyPath: m_Name
-      value: PowerUpSpawner
+      value: Power Up Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07222d21fbcdfd742b3050b20b3ff7ce, type: 3}
@@ -2159,7 +2171,7 @@ PrefabInstance:
     - target: {fileID: 7212029861874192346, guid: 508b68739ca278945ba78e2ff55cdded,
         type: 3}
       propertyPath: m_Name
-      value: GameSession
+      value: Game Session
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508b68739ca278945ba78e2ff55cdded, type: 3}

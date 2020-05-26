@@ -50,4 +50,6 @@ MonoBehaviour:
   maxSpawnXPosition: 20
   minSpawnYPosition: 5
   maxSpawnYPosition: 10
-  powerUp: {fileID: 2442008734852851712, guid: fb3e74ba8a65512449065b1502f8a8ca, type: 3}
+  powerUps:
+  - {fileID: 2442008734852851712, guid: fb3e74ba8a65512449065b1502f8a8ca, type: 3}
+  - {fileID: 2442008734852851712, guid: 4ea1bc8557b288746a3d53a5598ea29b, type: 3}

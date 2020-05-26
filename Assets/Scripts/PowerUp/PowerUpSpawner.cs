@@ -18,7 +18,7 @@ public class PowerUpSpawner : MonoBehaviour
     [SerializeField]
     private float maxSpawnYPosition = 10f;
     [SerializeField]
-    private PowerUp powerUp;
+    private PowerUp[] powerUps;
 
     private bool isSpawning = false;
 
@@ -52,7 +52,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
 
-        PowerUp newPowerUp = Instantiate(powerUp, powerUpPosition, Quaternion.identity) as PowerUp;
+        PowerUp newPowerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], powerUpPosition, Quaternion.identity) as PowerUp;
 
         Destroy(newPowerUp.gameObject, destroyNewPowerUpDelay);
     }
