@@ -35,13 +35,18 @@ public class DamageDealer : MonoBehaviour
 
     private void SubtractPlayerHealth()
     {
-        Health playerHealth = FindObjectOfType<Paddle>().GetComponent<Health>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player Health");
+
+        Health playerHealth = player.GetComponent<Health>();
 
         playerHealth.DealDamage(damageDealt);
 
         if (playerHealth.IsDead())
         {
             FindObjectOfType<LevelManager>().RestartLevel();
+        } else
+        {
+            player.GetComponent<Crack>().CrackObject();
         }
     }
 

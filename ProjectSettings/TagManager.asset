@@ -9,6 +9,7 @@ TagManager:
   - PowerUp
   - Block
   - Lose Collider
+  - Player Health
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Ball
   - Particles
   - PowerUp
-  - 
+  - Player Health
   - 
   - 
   - 
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Block
     uniqueID: 3567265785
+    locked: 0
+  - name: Health
+    uniqueID: 3687632749
     locked: 0
   - name: Ball
     uniqueID: 15832919
