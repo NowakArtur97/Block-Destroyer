@@ -8,8 +8,6 @@ public class PowerUp : MonoBehaviour
     private Power power;
 
     private SpriteRenderer spriteRenderer;
-    private Ball ball;
-    private DamageDealer damageDealer;
 
     private bool isBurning = false;
 
@@ -17,10 +15,6 @@ public class PowerUp : MonoBehaviour
 
     private void Start()
     {
-        ball = FindObjectOfType<Ball>();
-
-        damageDealer = ball.GetComponent<DamageDealer>();
-
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         spriteRenderer.sprite = power.sprite;
@@ -44,6 +38,7 @@ public class PowerUp : MonoBehaviour
             case PowerType.HEALTH:
                 break;
             case PowerType.SIZE:
+                yield return ActivateSizeTypePowerUp();
                 break;
             case PowerType.SPEED:
                 break;
@@ -54,8 +49,25 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject, 1);
     }
 
+    private IEnumerator ActivateSizeTypePowerUp()
+    {
+        Paddle paddle = FindObjectOfType<Paddle>();
+
+        SpriteRenderer paddleSpriteRenderer = paddle.GetComponent<SpriteRenderer>();
+
+        paddle.transform.localScale = new Vector3(power.value, power.value, power.value);
+
+        yield return new WaitForSecondsRealtime(power.duration);
+
+        paddle.transform.localScale = new Vector3(1, 1, 1);
+    }
+
     private IEnumerator ActivatePowerTypePowerUp()
     {
+        Ball ball = FindObjectOfType<Ball>();
+
+        DamageDealer damageDealer = ball.GetComponent<DamageDealer>();
+
         damageDealer.SetDamage(power.value);
         ball.ToggleBurning();
         yield return new WaitForSecondsRealtime(power.duration);
