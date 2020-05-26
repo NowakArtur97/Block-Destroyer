@@ -1675,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 210697111313395793, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}
       propertyPath: m_Name
-      value: Paddle Start
+      value: Paddle
       objectReference: {fileID: 0}
     - target: {fileID: 210697111313395797, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}

@@ -5,7 +5,7 @@ public class Ball : MonoBehaviour
     private const string BURNING_ANIMATION_STATE = "IsBurning";
 
     [SerializeField]
-    private Paddle mainPaddle;
+    private float distanceFromPaddle = 0.5f;
     [SerializeField]
     private float xPush = 1f;
     [SerializeField]
@@ -13,25 +13,29 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private AudioClip[] sounds;
 
-    private Vector2 ballStartingPosition;
+    private Vector2 ballToPaddleVector;
+
+    private Paddle mainPaddle;
 
     private Animator animator;
     private AudioSource audioSource;
     private GameSession gameSession;
 
-    private GameObject child;
+    private GameObject ballBody;
 
     private void Start()
     {
-        ballStartingPosition = new Vector2(transform.position.x, transform.position.y);
-
         audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
 
         gameSession = FindObjectOfType<GameSession>();
 
-        child = transform.GetChild(0).gameObject;
+        mainPaddle = FindObjectOfType<Paddle>();
+
+        ballBody = transform.GetChild(0).gameObject;
+
+        ballToPaddleVector = new Vector2(mainPaddle.transform.position.x, mainPaddle.transform.position.y + distanceFromPaddle);
     }
 
     void Update()
@@ -55,7 +59,7 @@ public class Ball : MonoBehaviour
 
     private void LockBallToPaddle()
     {
-        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, ballStartingPosition.y);
+        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, ballToPaddleVector.y);
 
         transform.position = paddlePos;
     }
@@ -76,8 +80,8 @@ public class Ball : MonoBehaviour
     private void TurnOtherWayToCollision(Collision2D collision)
     {
         Vector3 contactPoint = collision.contacts[0].point;
-        Vector3 direction = contactPoint - child.transform.position;
-        child.transform.up = direction;
+        Vector3 direction = contactPoint - ballBody.transform.position;
+        ballBody.transform.up = direction;
     }
 
     public void ToggleBurning()

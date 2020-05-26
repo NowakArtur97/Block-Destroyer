@@ -5,6 +5,8 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField]
     private bool isAutoPlayEnabled = false;
+    [SerializeField]
+    private Ball ball;
 
     private bool gameHasStarted = false;
 
@@ -28,6 +30,13 @@ public class GameSession : MonoBehaviour
             throw new NotImplementedException("Add after creating more levels");
             //FindObjectOfType<LevelManager>().LoadNextLevel();
         }
+    }
+
+    public void RestartGame()
+    {
+        gameHasStarted = false;
+
+        Instantiate(ball, new Vector3(1, 1, 0), Quaternion.identity);
     }
 
     private bool IsGameAWin()
