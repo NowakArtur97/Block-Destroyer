@@ -20,4 +20,13 @@ public class Crack : MonoBehaviour
 
         spriteRenderer.sprite = hitSprites[healthLeft];
     }
+
+    public void UncrackObject()
+    {
+        int healthLeft = (int)health.GetHealth();
+
+        if (healthLeft < hitSprites.Length - 1) {
+            spriteRenderer.sprite = hitSprites[healthLeft];
+        }
+    }
 }

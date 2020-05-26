@@ -32,6 +32,7 @@ public class PowerUp : MonoBehaviour
                 yield return ActivatePowerTypePowerUp();
                 break;
             case PowerType.HEALTH:
+                ActivateHealthTypePowerUp();
                 break;
             case PowerType.SIZE:
                 yield return ActivateSizeTypePowerUp();
@@ -44,6 +45,17 @@ public class PowerUp : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void ActivateHealthTypePowerUp()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player Health");
+
+        Health playerHealth = player.GetComponent<Health>();
+
+        player.GetComponent<Crack>().UncrackObject();
+
+        playerHealth.RestoreHeatlh(power.value);
     }
 
     private IEnumerator ActivateSpeedTypePowerUp()
