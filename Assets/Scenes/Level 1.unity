@@ -577,18 +577,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 766872182}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &792801564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 210697111313395796, guid: 1b4e32b4f46f70041a0dec95d84c7744,
-    type: 3}
-  m_PrefabInstance: {fileID: 210697111736942920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2665734a72a824e9092f1d8c33bd1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &821005433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,11 +1952,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5646853359208604339, guid: fbc460b336c1a1d47bf36eab50cfc999,
-        type: 3}
-      propertyPath: mainPaddle
-      value: 
-      objectReference: {fileID: 792801564}
     - target: {fileID: 5646853359208604344, guid: fbc460b336c1a1d47bf36eab50cfc999,
         type: 3}
       propertyPath: m_Name
@@ -2093,35 +2076,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
-        type: 3}
-      propertyPath: powerUps.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
-        type: 3}
-      propertyPath: powerUps.Array.data[2]
-      value: 
-      objectReference: {fileID: 2442008734852851712, guid: 2923593e45ed5d14d9e1bc3daba3eb15,
-        type: 3}
-    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
-        type: 3}
-      propertyPath: powerUps.Array.data[0]
-      value: 
-      objectReference: {fileID: 2442008734852851712, guid: f46ec97bf1f36dc4b9e8279770fc38c2,
-        type: 3}
-    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
-        type: 3}
-      propertyPath: powerUps.Array.data[1]
-      value: 
-      objectReference: {fileID: 2442008734852851712, guid: 2923593e45ed5d14d9e1bc3daba3eb15,
-        type: 3}
-    - target: {fileID: 6270644950168612501, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
-        type: 3}
-      propertyPath: powerUps.Array.data[3]
-      value: 
-      objectReference: {fileID: 2442008734852851712, guid: 2923593e45ed5d14d9e1bc3daba3eb15,
-        type: 3}
     - target: {fileID: 6270644950168612502, guid: 07222d21fbcdfd742b3050b20b3ff7ce,
         type: 3}
       propertyPath: m_Name
@@ -2260,17 +2214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7212029861874192345, guid: 508b68739ca278945ba78e2ff55cdded,
-        type: 3}
-      propertyPath: isAutoPlayEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7212029861874192345, guid: 508b68739ca278945ba78e2ff55cdded,
-        type: 3}
-      propertyPath: ball
-      value: 
-      objectReference: {fileID: 5646853359208604339, guid: fbc460b336c1a1d47bf36eab50cfc999,
-        type: 3}
     - target: {fileID: 7212029861874192346, guid: 508b68739ca278945ba78e2ff55cdded,
         type: 3}
       propertyPath: m_Name

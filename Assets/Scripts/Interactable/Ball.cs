@@ -3,6 +3,7 @@
 public class Ball : MonoBehaviour
 {
     private const string BURNING_ANIMATION_STATE = "IsBurning";
+    private const string ELECTRIFIED_ANIMATION_STATE = "IsElectrified";
 
     [SerializeField]
     private float distanceFromPaddle = 0.5f;
@@ -71,7 +72,7 @@ public class Ball : MonoBehaviour
         {
             PlayRandomSound();
 
-            if (IsBalBurning())
+            if (IsBallBurning())
             {
                 TurnOtherWayToCollision(collision);
             }
@@ -87,8 +88,14 @@ public class Ball : MonoBehaviour
 
     public void ToggleBurning()
     {
-        animator.SetBool(BURNING_ANIMATION_STATE, !IsBalBurning());
+        animator.SetBool(BURNING_ANIMATION_STATE, !IsBallBurning());
     }
+
+    public void ToggleElectrified()
+    {
+        animator.SetBool(ELECTRIFIED_ANIMATION_STATE, !IsBallElectrified());
+    }
+
 
     private void PlayRandomSound()
     {
@@ -96,9 +103,14 @@ public class Ball : MonoBehaviour
         audioSource.PlayOneShot(randomSound);
     }
 
-    private bool IsBalBurning()
+    private bool IsBallBurning()
     {
         return animator.GetBool(BURNING_ANIMATION_STATE);
+    }
+
+    private bool IsBallElectrified()
+    {
+        return animator.GetBool(ELECTRIFIED_ANIMATION_STATE);
     }
 
     private static bool WassMouseButtonClicked()

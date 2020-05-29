@@ -64,7 +64,11 @@ public class PowerUp : MonoBehaviour
 
         ball.GetComponent<Rigidbody2D>().velocity *= power.value;
 
+        ball.ToggleElectrified();
+
         yield return new WaitForSecondsRealtime(power.duration);
+
+        ball.ToggleElectrified();
 
         ball.GetComponent<Rigidbody2D>().velocity /= power.value;
     }
