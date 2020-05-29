@@ -53,9 +53,9 @@ public class PowerUp : MonoBehaviour
 
         Health playerHealth = player.GetComponent<Health>();
 
-        player.GetComponent<Crack>().UncrackObject();
-
         playerHealth.RestoreHeatlh(power.value);
+
+        player.GetComponent<Crack>().ChangeState();
     }
 
     private IEnumerator ActivateSpeedTypePowerUp()

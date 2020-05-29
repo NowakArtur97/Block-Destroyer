@@ -46,7 +46,7 @@ public class DamageDealer : MonoBehaviour
             FindObjectOfType<LevelManager>().RestartLevel();
         } else
         {
-            player.GetComponent<Crack>().CrackObject();
+            player.GetComponent<Crack>().ChangeState();
         }
     }
 
@@ -62,7 +62,7 @@ public class DamageDealer : MonoBehaviour
         }
         else
         {
-            block.GetComponent<Crack>().CrackObject();
+            block.GetComponent<Crack>().ChangeState();
         }
     }
 }
