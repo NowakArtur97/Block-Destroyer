@@ -19,7 +19,7 @@ public class DamageDealer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Block") || collision.gameObject.CompareTag("Skull"))
         {
             AttackBlock(collision.gameObject);
         }
@@ -44,7 +44,8 @@ public class DamageDealer : MonoBehaviour
         if (playerHealth.IsDead())
         {
             FindObjectOfType<LevelManager>().RestartLevel();
-        } else
+        }
+        else
         {
             player.GetComponent<Crack>().ChangeState();
         }
@@ -60,7 +61,7 @@ public class DamageDealer : MonoBehaviour
         {
             blockHealth.Die();
         }
-        else
+        else if (block.CompareTag("Block"))
         {
             block.GetComponent<Crack>().ChangeState();
         }
