@@ -4,45 +4,37 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PartyLighting : MonoBehaviour
 {
     [SerializeField]
-    private float minimumAngle = 0.3f;
-    [SerializeField]
-    private float maximumAngle = 0.6f;
-    [SerializeField]
-    private float rotationSpeed = 30f;
-    [SerializeField]
-    private int mainDirection = 1;
-
-    private int rotationDirection = 1;
+    private float timeLeftUntillChange = 1;
 
     private Light2D light;
+    private Color targetColor;
 
     private void Start()
     {
         light = GetComponent<Light2D>();
+
+        targetColor = new Color(Random.value, Random.value, Random.value);
     }
 
     void Update()
     {
-        RotateLighting();
-
         ChangeColorLighting();
     }
 
     private void ChangeColorLighting()
     {
-        light.color = Random.ColorHSV();
-    }
+        if (timeLeftUntillChange <= Time.deltaTime)
+        {
+            light.color = targetColor;
 
-    private void RotateLighting()
-    {
-        if (Mathf.Abs(transform.rotation.z) < Mathf.Abs(minimumAngle))
-        {
-            rotationDirection = -mainDirection;
+            targetColor = new Color(Random.value, Random.value, Random.value);
+            timeLeftUntillChange = 1.0f;
         }
-        else if (Mathf.Abs(transform.rotation.z) > Mathf.Abs(maximumAngle))
+        else
         {
-            rotationDirection = mainDirection;
+            light.color = Color.Lerp(light.color, targetColor, Time.deltaTime / timeLeftUntillChange);
+
+            timeLeftUntillChange -= Time.deltaTime;
         }
-        transform.eulerAngles += Vector3.forward * rotationSpeed * Time.deltaTime * rotationDirection;
     }
 }
