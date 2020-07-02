@@ -20,14 +20,16 @@ public class RotatingLighting : MonoBehaviour
 
     private void RotateLighting()
     {
-        if (Mathf.Abs(transform.rotation.z) < Mathf.Abs(minimumAngle))
-        {
-            rotationDirection = -mainDirection;
-        }
-        else if (Mathf.Abs(transform.rotation.z) > Mathf.Abs(maximumAngle))
-        {
-            rotationDirection = mainDirection;
-        }
+        //if (Mathf.Abs(transform.rotation.z) < Mathf.Abs(minimumAngle))
+        //{
+        //    rotationDirection = -mainDirection;
+        //}
+        //else if (Mathf.Abs(transform.rotation.z) > Mathf.Abs(maximumAngle))
+        //{
+        //    rotationDirection = mainDirection;
+        //}
         transform.eulerAngles += Vector3.forward * rotationSpeed * Time.deltaTime * rotationDirection;
+
+        //Debug.Log(transform.rotation.z);
     }
 }
