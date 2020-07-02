@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2090777178677247222}
   - component: {fileID: 2090777178677247216}
   m_Layer: 0
-  m_Name: Background Party Lighting (1)
+  m_Name: Background Party Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,8 @@ MonoBehaviour:
   minimumAngle: 0.3
   maximumAngle: 0.6
   rotationSpeed: 30
-  mainDirection: 1
+  beginAngles: {x: 0, y: 0, z: 300}
+  endAngles: {x: 0, y: 0, z: 40}
 --- !u!114 &2090777178677247216
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,15 +3,18 @@
 public class RotatingLighting : MonoBehaviour
 {
     [SerializeField]
-    private float minimumAngle = 0.3f;
-    [SerializeField]
-    private float maximumAngle = 0.6f;
-    [SerializeField]
     private float rotationSpeed = 30f;
     [SerializeField]
-    private int mainDirection = 1;
+    private Vector3 beginAngles;
+    [SerializeField]
+    private Vector3 endAngles;
 
-    private int rotationDirection = 1;
+    private Vector3 angles;
+
+    private void Start()
+    {
+        transform.localEulerAngles = beginAngles;
+    }
 
     void Update()
     {
@@ -20,16 +23,8 @@ public class RotatingLighting : MonoBehaviour
 
     private void RotateLighting()
     {
-        //if (Mathf.Abs(transform.rotation.z) < Mathf.Abs(minimumAngle))
-        //{
-        //    rotationDirection = -mainDirection;
-        //}
-        //else if (Mathf.Abs(transform.rotation.z) > Mathf.Abs(maximumAngle))
-        //{
-        //    rotationDirection = mainDirection;
-        //}
-        transform.eulerAngles += Vector3.forward * rotationSpeed * Time.deltaTime * rotationDirection;
+        angles.z = Mathf.PingPong(Time.time * rotationSpeed, endAngles.z) - beginAngles.z;
 
-        //Debug.Log(transform.rotation.z);
+        transform.localEulerAngles = angles;
     }
 }

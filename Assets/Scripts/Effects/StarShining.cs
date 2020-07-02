@@ -17,7 +17,6 @@ public class StarShining : MonoBehaviour
     private IEnumerator StarLightAnimation()
     {
         float random = Random.Range(minTimeBeforeShining, maxTimeBeforeShining);
-        Debug.Log(gameObject.name + "  " + random);
         yield return new WaitForSeconds(random);
         GetComponent<Animator>().enabled = true;
     }
