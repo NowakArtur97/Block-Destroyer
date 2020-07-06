@@ -10,35 +10,51 @@ public class SpaceShipPathing : MonoBehaviour
     private float speed = 10f;
 
     private int waypointIndex = 0;
+    private bool isMovingRight = true;
 
     private void Start()
     {
         transform.position = waypoints[waypointIndex].transform.position;
+
+        waypointIndex++;
     }
 
     private void Update()
     {
-        MoveTo();
+        if (isMovingRight)
+        {
+            MoveTo();
+        }
+        else
+        {
+            MoveTo();
+        }
     }
 
     private void MoveTo()
     {
-        if (waypointIndex <= waypoints.Count - 1)
+        var targetPosition = waypoints[waypointIndex].transform.position;
+
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+        if (transform.position == targetPosition)
         {
-            var targetPosition = waypoints[waypointIndex].transform.position;
+            if (waypointIndex + 1 >= waypoints.Count || waypointIndex - 1 < 0)
+            {
+                isMovingRight = !isMovingRight;
 
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                transform.RotateAround(transform.position, transform.up, 180f);
+            }
 
-            if (transform.position == targetPosition)
+            if (isMovingRight)
             {
                 waypointIndex++;
             }
+            else
+            {
+                waypointIndex--;
+            }
         }
-        else
-        {
-            waypointIndex = 0;
 
-            transform.position = waypoints[waypointIndex].transform.position;
-        }
     }
 }
