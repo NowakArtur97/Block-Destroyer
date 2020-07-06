@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceShipPathing : MonoBehaviour
@@ -7,7 +6,7 @@ public class SpaceShipPathing : MonoBehaviour
     [SerializeField]
     private List<Transform> waypoints;
     [SerializeField]
-    private float speed = 10f;
+    private float movingSpeed = 10f;
 
     private int waypointIndex = 0;
     private bool isMovingRight = true;
@@ -21,21 +20,14 @@ public class SpaceShipPathing : MonoBehaviour
 
     private void Update()
     {
-        if (isMovingRight)
-        {
-            MoveTo();
-        }
-        else
-        {
-            MoveTo();
-        }
+        MoveTo();
     }
 
     private void MoveTo()
     {
         var targetPosition = waypoints[waypointIndex].transform.position;
 
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movingSpeed * Time.deltaTime);
 
         if (transform.position == targetPosition)
         {
