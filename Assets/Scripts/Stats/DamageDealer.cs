@@ -19,7 +19,8 @@ public class DamageDealer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Block") || collision.gameObject.CompareTag("Skull"))
+        if (collision.gameObject.CompareTag("Block") || collision.gameObject.CompareTag("Skull")
+             || collision.gameObject.CompareTag("Space Ship"))
         {
             AttackBlock(collision.gameObject);
         }

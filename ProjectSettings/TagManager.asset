@@ -11,6 +11,7 @@ TagManager:
   - Lose Collider
   - Player Health
   - Skull
+  - Space Ship
   layers:
   - Default
   - TransparentFX
