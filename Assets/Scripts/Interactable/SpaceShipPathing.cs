@@ -27,7 +27,6 @@ public class SpaceShipPathing : MonoBehaviour
         {
             RotateShipToDirection();
         }
-
     }
 
     private void Update()
