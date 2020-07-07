@@ -27,9 +27,7 @@ public class GameSession : MonoBehaviour
     {
         if (IsGameAWin())
         {
-            Debug.Log("Load Next Level");
-            throw new NotImplementedException("Add after creating more levels");
-            //levelManager.LoadNextLevel();
+            levelManager.LoadNextLevel();
         }
     }
 

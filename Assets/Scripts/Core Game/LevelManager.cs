@@ -22,11 +22,23 @@ public class LevelManager : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void LoadNextLevel() => SceneManager.LoadScene(++currentSceneIndex);
+    public void LoadNextLevel()
+    {
+        ++currentSceneIndex;
+
+        if (SceneManager.sceneCountInBuildSettings <= currentSceneIndex)
+        {
+            currentSceneIndex = 0;
+        }
+
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
+        Debug.Log(SceneManager.sceneCount);
+
+        SceneManager.LoadScene(currentSceneIndex);
+    }
 
     public void RestartLevel()
     {
-        Debug.Log("Restart Level");
         SceneManager.LoadScene(currentSceneIndex);
     }
 }
