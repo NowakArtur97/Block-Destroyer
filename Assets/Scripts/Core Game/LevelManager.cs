@@ -5,6 +5,9 @@ public class LevelManager : MonoBehaviour
 {
     private int currentSceneIndex;
 
+    [SerializeField]
+    private Canvas menuCanvas;
+
     private void Start()
     {
         int numberOfLevelManagers = FindObjectsOfType<LevelManager>().Length;
@@ -20,6 +23,12 @@ public class LevelManager : MonoBehaviour
         }
 
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void PlayLevel()
+    {
+        FindObjectOfType<GameSession>().SetAutoPlayEnabled(false);
+        menuCanvas.enabled = false;
     }
 
     public void LoadNextLevel()

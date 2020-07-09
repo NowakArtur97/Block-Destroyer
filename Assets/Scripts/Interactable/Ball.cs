@@ -37,27 +37,31 @@ public class Ball : MonoBehaviour
         ballBody = transform.GetChild(0).gameObject;
 
         ballToPaddleVector = new Vector2(mainPaddle.transform.position.x, mainPaddle.transform.position.y + distanceFromPaddle);
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
     }
 
     void Update()
     {
         if (!gameSession.HasGameStarted())
         {
-            LockBallToPaddle();
+            if (!gameSession.IsAutoPlayEnabled())
+            {
+                LockBallToPaddle();
+            }
             LaunchBall();
         }
     }
 
     private void LaunchBall()
     {
-        if (WassMouseButtonClicked())
+        if (WasMouseButtonClicked() && !gameSession.IsAutoPlayEnabled())
         {
             gameSession.SetGameHasStarted(true);
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
         }
     }
-
 
     private void LockBallToPaddle()
     {
@@ -74,12 +78,12 @@ public class Ball : MonoBehaviour
 
             if (IsBallBurning())
             {
-                TurnOtherWayToCollision(collision);
+                TurnOppositeWayToCollision(collision);
             }
         }
     }
 
-    private void TurnOtherWayToCollision(Collision2D collision)
+    private void TurnOppositeWayToCollision(Collision2D collision)
     {
         Vector3 contactPoint = collision.contacts[0].point;
         Vector3 direction = contactPoint - ballBody.transform.position;
@@ -113,7 +117,7 @@ public class Ball : MonoBehaviour
         return animator.GetBool(ELECTRIFIED_ANIMATION_STATE);
     }
 
-    private static bool WassMouseButtonClicked()
+    private static bool WasMouseButtonClicked()
     {
         return Input.GetMouseButtonDown(0);
     }

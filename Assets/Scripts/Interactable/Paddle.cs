@@ -42,7 +42,7 @@ public class Paddle : MonoBehaviour
 
     private float GetXPosition(Vector2 paddlePosition)
     {
-        if (gameSession.IsAutoPlayEnabled() && gameSession.HasGameStarted())
+        if (gameSession.IsAutoPlayEnabled())
         {
             return ball.transform.position.x;
         }

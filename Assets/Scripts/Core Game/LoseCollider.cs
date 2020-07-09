@@ -2,8 +2,8 @@
 
 public class LoseCollider : MonoBehaviour
 {
-    [SerializeField]
-    private float damageDealtToPlayer = 1f;
+    //[SerializeField]
+    //private float damageDealtToPlayer = 1f;
 
     private GameSession gameSession;
 

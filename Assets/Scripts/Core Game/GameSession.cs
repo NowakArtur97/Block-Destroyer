@@ -1,16 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameSession : MonoBehaviour
 {
     [SerializeField]
-    private bool isAutoPlayEnabled = false;
+    private bool isAutoPlayEnabled = true;
     [SerializeField]
     private Ball ball;
 
     private LevelManager levelManager;
 
-    private bool gameHasStarted = false;
+    private bool hasGameStarted = false;
 
     private int numberOfBreakableBlocks;
 
@@ -33,7 +32,7 @@ public class GameSession : MonoBehaviour
 
     public void RestartGame()
     {
-        gameHasStarted = false;
+        hasGameStarted = false;
 
         Instantiate(ball, new Vector3(1, 1, 0), Quaternion.identity);
     }
@@ -42,7 +41,9 @@ public class GameSession : MonoBehaviour
 
     public bool IsAutoPlayEnabled() => isAutoPlayEnabled;
 
-    public bool HasGameStarted() => gameHasStarted;
+    public void SetAutoPlayEnabled(bool value) => isAutoPlayEnabled = value;
 
-    public void SetGameHasStarted(bool gameHasStarted) => this.gameHasStarted = gameHasStarted;
+    public bool HasGameStarted() => hasGameStarted;
+
+    public void SetGameHasStarted(bool gameHasStarted) => this.hasGameStarted = gameHasStarted;
 }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -370,6 +370,36 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadPreviousLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 27684074}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101275542566123611, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7101275542921021776, guid: f260146d7faf1b74b84e21ebf244bce6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -412,6 +442,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f260146d7faf1b74b84e21ebf244bce6, type: 3}
+--- !u!223 &39952946 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7101275543247312186, guid: f260146d7faf1b74b84e21ebf244bce6,
+    type: 3}
+  m_PrefabInstance: {fileID: 39952945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &76160008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1833,7 +1869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caee4ba552999f247ae4142c8c9709c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealtToPlayer: 1
 --- !u!114 &1159103494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,6 +2954,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2277735999870221812, guid: 79cc24244f9ff274da5af6411eb14730,
+        type: 3}
+      propertyPath: menuCanvas
+      value: 
+      objectReference: {fileID: 39952946}
     - target: {fileID: 2277735999870221813, guid: 79cc24244f9ff274da5af6411eb14730,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3483,6 +3523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212029861874192345, guid: 508b68739ca278945ba78e2ff55cdded,
+        type: 3}
+      propertyPath: isAutoPlayEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7212029861874192346, guid: 508b68739ca278945ba78e2ff55cdded,
         type: 3}
