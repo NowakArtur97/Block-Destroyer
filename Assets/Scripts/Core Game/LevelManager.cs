@@ -31,8 +31,17 @@ public class LevelManager : MonoBehaviour
             currentSceneIndex = 0;
         }
 
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
-        Debug.Log(SceneManager.sceneCount);
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadPreviousLevel()
+    {
+        --currentSceneIndex;
+
+        if (0 > currentSceneIndex)
+        {
+            currentSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        }
 
         SceneManager.LoadScene(currentSceneIndex);
     }
