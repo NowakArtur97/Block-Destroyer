@@ -43,19 +43,20 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (!gameSession.HasGameStarted())
+        if (!gameSession.IsAutoPlayEnabled())
         {
-            if (!gameSession.IsAutoPlayEnabled())
+            if (!gameSession.HasGameStarted())
             {
                 LockBallToPaddle();
             }
+
             LaunchBall();
         }
     }
 
     private void LaunchBall()
     {
-        if (WasMouseButtonClicked() && !gameSession.IsAutoPlayEnabled())
+        if (WasMouseButtonClicked() && !gameSession.HasGameStarted())
         {
             gameSession.SetGameHasStarted(true);
 

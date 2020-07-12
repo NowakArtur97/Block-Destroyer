@@ -19,8 +19,6 @@ public class LevelManager : MonoBehaviour
         gameSession.SetAutoPlayEnabled(false);
         gameSession.InstantiateBlocks();
         menuCanvas.enabled = false;
-        gameSession.SetGameHasStarted(true);
-        gameSession.SetAutoPlayEnabled(false);
     }
 
     public void LoadNextLevel()

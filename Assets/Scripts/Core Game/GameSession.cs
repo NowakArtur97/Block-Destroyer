@@ -61,8 +61,5 @@ public class GameSession : MonoBehaviour
 
     public bool HasGameStarted() => hasGameStarted;
 
-    public void SetGameHasStarted(bool hasGameStarted)
-    {
-        this.hasGameStarted = hasGameStarted;
-    }
+    public void SetGameHasStarted(bool hasGameStarted) => this.hasGameStarted = hasGameStarted;
 }
