@@ -45,14 +45,6 @@ public class GameSession : MonoBehaviour
             block.gameObject.SetActive(true);
             block.GetComponent<Health>().RestoreMaxHealth();
             block.GetComponent<Crack>().RevertChanges();
-            Instantiate(block, block.transform.position, Quaternion.identity);
-        }
-
-        for (int i = allBlocks.Count - 1; i >= 0; i--)
-        {
-            Block block = allBlocks[i];
-            allBlocks.Remove(block);
-            Destroy(block.gameObject);
         }
     }
 
