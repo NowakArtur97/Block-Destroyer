@@ -51,4 +51,9 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(currentSceneIndex);
     }
+
+    public void QuiGame()
+    {
+        Application.Quit();
+    }
 }
