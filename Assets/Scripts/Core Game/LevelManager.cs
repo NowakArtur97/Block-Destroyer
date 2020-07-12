@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    private int currentSceneIndex;
-
     [SerializeField]
     private Canvas menuCanvas;
+
+    private int currentSceneIndex;
 
     private void Start()
     {
@@ -27,7 +27,9 @@ public class LevelManager : MonoBehaviour
 
     public void PlayLevel()
     {
-        FindObjectOfType<GameSession>().SetAutoPlayEnabled(false);
+        GameSession gameSession = FindObjectOfType<GameSession>();
+        gameSession.SetAutoPlayEnabled(false);
+        gameSession.InstantiateBlocks();
         menuCanvas.enabled = false;
     }
 

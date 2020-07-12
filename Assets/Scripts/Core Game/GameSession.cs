@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameSession : MonoBehaviour
 {
@@ -7,18 +8,18 @@ public class GameSession : MonoBehaviour
     [SerializeField]
     private Ball ball;
 
-    private LevelManager levelManager;
-
     private bool hasGameStarted = false;
 
     private int numberOfBreakableBlocks;
 
-    private void Start()
-    {
-        levelManager = FindObjectOfType<LevelManager>();
-    }
+    private List<Block> allBlocks = new List<Block>();
 
-    public void CountBlocks() => numberOfBreakableBlocks++;
+    public void LoadBlocks(Block block)
+    {
+        allBlocks.Add(block);
+
+        numberOfBreakableBlocks++;
+    }
 
     public void BlockDestroyed() => numberOfBreakableBlocks--;
 
@@ -26,7 +27,7 @@ public class GameSession : MonoBehaviour
     {
         if (IsGameAWin())
         {
-            levelManager.LoadNextLevel();
+            FindObjectOfType<LevelManager>().LoadNextLevel();
         }
     }
 
@@ -37,6 +38,24 @@ public class GameSession : MonoBehaviour
         Instantiate(ball, new Vector3(1, 1, 0), Quaternion.identity);
     }
 
+    public void InstantiateBlocks()
+    {
+        foreach (Block block in allBlocks)
+        {
+            block.gameObject.SetActive(true);
+            block.GetComponent<Health>().RestoreMaxHealth();
+            block.GetComponent<Crack>().RevertChanges();
+            Instantiate(block, block.transform.position, Quaternion.identity);
+        }
+
+        for (int i = allBlocks.Count - 1; i >= 0; i--)
+        {
+            Block block = allBlocks[i];
+            allBlocks.Remove(block);
+            Destroy(block.gameObject);
+        }
+    }
+
     private bool IsGameAWin() => numberOfBreakableBlocks <= 0;
 
     public bool IsAutoPlayEnabled() => isAutoPlayEnabled;
@@ -45,5 +64,8 @@ public class GameSession : MonoBehaviour
 
     public bool HasGameStarted() => hasGameStarted;
 
-    public void SetGameHasStarted(bool gameHasStarted) => this.hasGameStarted = gameHasStarted;
+    public void SetGameHasStarted(bool hasGameStarted)
+    {
+        this.hasGameStarted = hasGameStarted;
+    }
 }

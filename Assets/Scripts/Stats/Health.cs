@@ -12,10 +12,9 @@ public class Health : MonoBehaviour
         maxHealth = health;
     }
 
-    public void DealDamage(float damage)
-    {
-        health -= damage;
-    }
+    public void DealDamage(float damage) => health -= damage;
+
+    public void RestoreMaxHealth() => health = maxHealth;
 
     public void RestoreHeatlh(float healthRestored)
     {
@@ -33,7 +32,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         FindObjectOfType<GameSession>().BlockDestroyed();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public bool IsDead()
