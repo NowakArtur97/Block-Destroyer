@@ -43,8 +43,8 @@ public class GameSession : MonoBehaviour
         foreach (Block block in allBlocks)
         {
             block.gameObject.SetActive(true);
-            block.GetComponent<Health>().RestoreMaxHealth();
-            block.GetComponent<Crack>().RevertChanges();
+            block.GetComponent<Health>()?.RestoreMaxHealth();
+            block.GetComponent<Crack>()?.RevertChanges();
         }
     }
 
