@@ -16,16 +16,21 @@ public class GameSession : MonoBehaviour
 
     public void LoadBlocks(Block block)
     {
-        allBlocks.Add(block);
-
         numberOfBreakableBlocks++;
+        allBlocks.Add(block);
     }
 
-    public void BlockDestroyed() => numberOfBreakableBlocks--;
+    public void BlockDestroyed()
+    {
+        if (hasGameStarted)
+        {
+            numberOfBreakableBlocks--;
+        }
+    }
 
     private void Update()
     {
-        if (IsGameAWin())
+        if (IsGameAWin() && hasGameStarted)
         {
             FindObjectOfType<LevelManager>().LoadNextLevel();
         }
