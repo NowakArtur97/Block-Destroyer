@@ -719,6 +719,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2081711629006742377, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2277735999534919604}
+    - target: {fileID: 2081711629006742377, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuiGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2787443094018331568, guid: f260146d7faf1b74b84e21ebf244bce6,
         type: 3}
       propertyPath: m_Name
