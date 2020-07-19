@@ -20,9 +20,8 @@ public class Crack : MonoBehaviour
     {
         int healthLeft = (int)health.GetHealth() - 1;
 
-        spriteRenderer.sprite = _hitSprites[healthLeft];
+        spriteRenderer.sprite = healthLeft >= _hitSprites.Length ? _defaultSprite : _hitSprites[healthLeft];
     }
 
     public void RevertChanges() => spriteRenderer.sprite = _defaultSprite;
-
 }
