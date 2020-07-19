@@ -4,34 +4,31 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     [SerializeField]
-    private float destroyNewPowerUpDelay = 10f;
+    private float _destroyNewPowerUpDelay = 10f;
     [SerializeField]
-    private float minSpawnDelay = 6f;
+    private float _minSpawnDelay = 6f;
     [SerializeField]
-    private float maxSpawnDelay = 8f;
+    private float _maxSpawnDelay = 8f;
     [SerializeField]
-    private float minSpawnXPosition = 1f;
+    private float _minSpawnXPosition = 1f;
     [SerializeField]
-    private float maxSpawnXPosition = 20f;
+    private float _maxSpawnXPosition = 20f;
     [SerializeField]
-    private float minSpawnYPosition = 5f;
+    private float _minSpawnYPosition = 5f;
     [SerializeField]
-    private float maxSpawnYPosition = 10f;
+    private float _maxSpawnYPosition = 10f;
     [SerializeField]
-    private PowerUp[] powerUps;
+    private PowerUp[] _powerUps;
 
-    private bool isSpawning = false;
+    private bool _isSpawning = false;
 
     private GameSession gameSession;
 
-    private void Start()
-    {
-        gameSession = FindObjectOfType<GameSession>();
-    }
+    private void Start() => gameSession = FindObjectOfType<GameSession>();
 
     private void Update()
     {
-        if (gameSession.HasGameStarted() && !isSpawning)
+        if (gameSession.HasGameStarted() && !_isSpawning)
         {
             StartCoroutine(SpawningCoroutine());
         }
@@ -39,21 +36,21 @@ public class PowerUpSpawner : MonoBehaviour
 
     private IEnumerator SpawningCoroutine()
     {
-        isSpawning = true;
+        _isSpawning = true;
 
-        yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+        yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay));
 
-        isSpawning = false;
+        _isSpawning = false;
 
         Spawn();
     }
 
     private void Spawn()
     {
-        Vector2 powerUpPosition = new Vector2(Random.Range(minSpawnXPosition, maxSpawnXPosition), Random.Range(minSpawnYPosition, maxSpawnYPosition));
+        Vector2 powerUpPosition = new Vector2(Random.Range(_minSpawnXPosition, _maxSpawnXPosition), Random.Range(_minSpawnYPosition, _maxSpawnYPosition));
 
-        PowerUp newPowerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], powerUpPosition, Quaternion.identity) as PowerUp;
+        PowerUp newPowerUp = Instantiate(_powerUps[Random.Range(0, _powerUps.Length)], powerUpPosition, Quaternion.identity) as PowerUp;
 
-        Destroy(newPowerUp.gameObject, destroyNewPowerUpDelay);
+        Destroy(newPowerUp.gameObject, _destroyNewPowerUpDelay);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField]
-    private Power power;
+    private Power _power;
 
     private SpriteRenderer spriteRenderer;
 
@@ -13,32 +13,32 @@ public class PowerUp : MonoBehaviour
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        spriteRenderer.sprite = power.sprite;
+        spriteRenderer.sprite = _power.sprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Paddle"))
+        if (HasPlayerPickedUpPowerUp(collision))
         {
-            StartCoroutine(Pickup());
+            StartCoroutine(PickuUpCoroutine());
         }
     }
 
-    private IEnumerator Pickup()
+    private IEnumerator PickuUpCoroutine()
     {
-        switch (power.type)
+        switch (_power.type)
         {
             case PowerType.ATTACK:
-                yield return ActivatePowerTypePowerUp();
+                yield return ActivatePowerTypePowerUpCoroutine();
                 break;
             case PowerType.HEALTH:
-                ActivateHealthTypePowerUp();
+                ActivateHealthTypePowerUpCoroutine();
                 break;
             case PowerType.SIZE:
-                yield return ActivateSizeTypePowerUp();
+                yield return ActivateSizeTypePowerUpCoroutine();
                 break;
             case PowerType.SPEED:
-                yield return ActivateSpeedTypePowerUp();
+                yield return ActivateSpeedTypePowerUpCoroutine();
                 break;
             default:
                 throw new NotImplementedException();
@@ -47,53 +47,59 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void ActivateHealthTypePowerUp()
+    private void ActivateHealthTypePowerUpCoroutine()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player Health");
 
         Health playerHealth = player.GetComponent<Health>();
 
-        playerHealth.RestoreHeatlh(power.value);
+        playerHealth.RestoreHeatlh(_power.value);
 
         player.GetComponent<Crack>().ChangeState();
     }
 
-    private IEnumerator ActivateSpeedTypePowerUp()
+    private IEnumerator ActivateSpeedTypePowerUpCoroutine()
     {
         Ball ball = FindObjectOfType<Ball>();
 
-        ball.GetComponent<Rigidbody2D>().velocity *= power.value;
+        ball.GetComponent<Rigidbody2D>().velocity *= _power.value;
 
         ball.ToggleElectrified();
 
-        yield return new WaitForSecondsRealtime(power.duration);
+        yield return new WaitForSecondsRealtime(_power.duration);
 
         ball.ToggleElectrified();
 
-        ball.GetComponent<Rigidbody2D>().velocity /= power.value;
+        ball.GetComponent<Rigidbody2D>().velocity /= _power.value;
     }
 
-    private IEnumerator ActivateSizeTypePowerUp()
+    private IEnumerator ActivateSizeTypePowerUpCoroutine()
     {
         Paddle paddle = FindObjectOfType<Paddle>();
 
-        paddle.Scale(power.value);
+        paddle.Scale(_power.value);
 
-        yield return new WaitForSecondsRealtime(power.duration);
+        yield return new WaitForSecondsRealtime(_power.duration);
 
         paddle.Scale(1);
     }
 
-    private IEnumerator ActivatePowerTypePowerUp()
+    private IEnumerator ActivatePowerTypePowerUpCoroutine()
     {
         Ball ball = FindObjectOfType<Ball>();
 
         DamageDealer damageDealer = ball.GetComponent<DamageDealer>();
 
-        damageDealer.SetDamage(power.value);
+        damageDealer.SetDamage(_power.value);
+
         ball.ToggleBurning();
-        yield return new WaitForSecondsRealtime(power.duration);
+
+        yield return new WaitForSecondsRealtime(_power.duration);
+
         ball.ToggleBurning();
+
         damageDealer.ResetDamage();
     }
+
+    private bool HasPlayerPickedUpPowerUp(Collider2D collision) => collision.CompareTag("Paddle");
 }
