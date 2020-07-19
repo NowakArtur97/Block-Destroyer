@@ -4,37 +4,34 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PartyLighting : MonoBehaviour
 {
     [SerializeField]
-    private float timeLeftUntillChange = 1;
+    private float _timeLeftUntillChange = 1;
 
-    private Light2D light;
+    private Light2D light2d;
     private Color targetColor;
 
     private void Start()
     {
-        light = GetComponent<Light2D>();
+        light2d = GetComponent<Light2D>();
 
         targetColor = new Color(Random.value, Random.value, Random.value);
     }
 
-    void Update()
-    {
-        ChangeColorLighting();
-    }
+    void Update() => ChangeColorLighting();
 
     private void ChangeColorLighting()
     {
-        if (timeLeftUntillChange <= Time.deltaTime)
+        if (_timeLeftUntillChange <= Time.deltaTime)
         {
-            light.color = targetColor;
+            light2d.color = targetColor;
 
             targetColor = new Color(Random.value, Random.value, Random.value);
-            timeLeftUntillChange = 1.0f;
+            _timeLeftUntillChange = 1.0f;
         }
         else
         {
-            light.color = Color.Lerp(light.color, targetColor, Time.deltaTime / timeLeftUntillChange);
+            light2d.color = Color.Lerp(light2d.color, targetColor, Time.deltaTime / _timeLeftUntillChange);
 
-            timeLeftUntillChange -= Time.deltaTime;
+            _timeLeftUntillChange -= Time.deltaTime;
         }
     }
 }

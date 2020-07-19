@@ -4,19 +4,19 @@ using UnityEngine;
 public class StarShining : MonoBehaviour
 {
     [SerializeField]
-    private float minTimeBeforeShining = 0f;
+    private float _minTimeBeforeShining = 0f;
     [SerializeField]
-    private float maxTimeBeforeShining = 2f;
+    private float _maxTimeBeforeShining = 2f;
 
     private void Start()
     {
         GetComponent<Animator>().enabled = false;
-        StartCoroutine(StarLightAnimation());
+        StartCoroutine(StartShiningCoroutine());
     }
 
-    private IEnumerator StarLightAnimation()
+    private IEnumerator StartShiningCoroutine()
     {
-        float random = Random.Range(minTimeBeforeShining, maxTimeBeforeShining);
+        float random = Random.Range(_minTimeBeforeShining, _maxTimeBeforeShining);
         yield return new WaitForSeconds(random);
         GetComponent<Animator>().enabled = true;
     }

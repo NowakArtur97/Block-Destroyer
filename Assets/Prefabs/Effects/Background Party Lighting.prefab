@@ -86,11 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092da915d92d9684ca4d8eff4f9a01d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumAngle: 0.3
-  maximumAngle: 0.6
-  rotationSpeed: 30
-  beginAngles: {x: 0, y: 0, z: 300}
-  endAngles: {x: 0, y: 0, z: 40}
+  _rotationSpeed: 30
+  _beginAngles: {x: 0, y: 0, z: 0}
+  _endAngles: {x: 0, y: 0, z: 40}
 --- !u!114 &2090777178677247216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,4 +101,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819df6d7e89a27e4b8ad280ee1b26d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeftUntillChange: 1
+  _timeLeftUntillChange: 1

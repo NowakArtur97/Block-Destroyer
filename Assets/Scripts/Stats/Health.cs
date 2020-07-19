@@ -9,16 +9,16 @@ public class Health : MonoBehaviour
 
     private void Start() => _maxHealth = _health;
 
-    public void DealDamage(float damage) => _health -= damage;
+    public float GetHealth() => _health;
 
-    public void RestoreMaxHealth() => _health = _maxHealth;
+    public void DealDamage(float damage) => _health -= damage;
 
     public void RestoreHeatlh(float healthRestored)
     {
         if (_maxHealth >= _health + healthRestored) _health += healthRestored;
     }
 
-    public float GetHealth() => _health;
+    public void RestoreMaxHealth() => _health = _maxHealth;
 
     public void Die()
     {

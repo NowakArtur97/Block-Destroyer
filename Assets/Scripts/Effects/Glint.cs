@@ -3,18 +3,15 @@
 public class Glint : MonoBehaviour
 {
     [SerializeField]
-    private GameObject glintVFX;
+    private GameObject _glintVFX;
     [SerializeField]
-    private float durationOfGlint = 1f;
+    private float _durationOfGlint = 1f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GlintObject();
-    }
+    private void OnCollisionEnter2D(Collision2D collision) => GlintObject();
 
     private void GlintObject()
     {
-        GameObject glint = Instantiate(glintVFX, transform.position, transform.rotation);
-        Destroy(glint, durationOfGlint);
+        GameObject glint = Instantiate(_glintVFX, transform.position, transform.rotation);
+        Destroy(glint, _durationOfGlint);
     }
 }

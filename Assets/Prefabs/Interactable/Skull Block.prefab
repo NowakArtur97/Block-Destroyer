@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8187b8046875be4c8a56b8a54a23395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  _health: 4
 --- !u!114 &4384595656794103452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,9 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a08b4862e0bfdf644a2a5b52542dd51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glintVFX: {fileID: 2424076170753656606, guid: cb6a111b49cccfa43a92a4ef10483158,
+  _glintVFX: {fileID: 2424076170753656606, guid: cb6a111b49cccfa43a92a4ef10483158,
     type: 3}
-  durationOfGlint: 1
+  _durationOfGlint: 1
 --- !u!212 &4384595656794103449
 SpriteRenderer:
   m_ObjectHideFlags: 0

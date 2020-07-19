@@ -3,9 +3,9 @@
 public class Crack : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] hitSprites;
+    private Sprite[] _hitSprites;
     [SerializeField]
-    private Sprite defaultSprite;
+    private Sprite _defaultSprite;
 
     private Health health;
     private SpriteRenderer spriteRenderer;
@@ -20,11 +20,9 @@ public class Crack : MonoBehaviour
     {
         int healthLeft = (int)health.GetHealth() - 1;
 
-        spriteRenderer.sprite = hitSprites[healthLeft];
+        spriteRenderer.sprite = _hitSprites[healthLeft];
     }
 
-    public void RevertChanges()
-    {
-        spriteRenderer.sprite = defaultSprite;
-    }
+    public void RevertChanges() => spriteRenderer.sprite = _defaultSprite;
+
 }
