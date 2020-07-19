@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1199,7 +1199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480022135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.101759, y: 7.4481425, z: -0.03138292}
+  m_LocalPosition: {x: 11.101759, y: 7.4481425, z: -3.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1782271335}
@@ -4856,7 +4856,7 @@ PrefabInstance:
     - target: {fileID: 210697111313395797, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 210697111313395797, guid: 1b4e32b4f46f70041a0dec95d84c7744,
         type: 3}
@@ -5236,7 +5236,7 @@ PrefabInstance:
     - target: {fileID: 5646853359208604350, guid: fbc460b336c1a1d47bf36eab50cfc999,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 5646853359208604350, guid: fbc460b336c1a1d47bf36eab50cfc999,
         type: 3}
@@ -5356,6 +5356,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6607469230347400406, guid: 7534c52ce6a085146bc452fa581bed98,
+        type: 3}
+      propertyPath: health
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6607469230347400408, guid: 7534c52ce6a085146bc452fa581bed98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5369,7 +5374,7 @@ PrefabInstance:
     - target: {fileID: 6607469230347400408, guid: 7534c52ce6a085146bc452fa581bed98,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 6607469230347400408, guid: 7534c52ce6a085146bc452fa581bed98,
         type: 3}
@@ -5500,6 +5505,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795849747}
+    - target: {fileID: 7101275542921021783, guid: f260146d7faf1b74b84e21ebf244bce6,
+        type: 3}
+      propertyPath: m_Text
+      value: Party Level
+      objectReference: {fileID: 0}
     - target: {fileID: 7101275543058413554, guid: f260146d7faf1b74b84e21ebf244bce6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -3,24 +3,17 @@
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField]
-    private float damageDealt = 1f;
+    private float _damageDealt = 1f;
     [SerializeField]
-    private float defaultDamageDealt = 1f;
+    private readonly float _defaultDamageDealt = 1f;
 
-    public void SetDamage(float damageDealt)
-    {
-        this.damageDealt = damageDealt;
-    }
+    public void SetDamage(float damageDealt) => _damageDealt = damageDealt;
 
-    public void ResetDamage()
-    {
-        damageDealt = defaultDamageDealt;
-    }
+    public void ResetDamage() => _damageDealt = _defaultDamageDealt;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Block") || collision.gameObject.CompareTag("Skull")
-             || collision.gameObject.CompareTag("Space Ship"))
+        if (IsOfBlockType(collision))
         {
             AttackBlock(collision.gameObject);
         }
@@ -40,7 +33,7 @@ public class DamageDealer : MonoBehaviour
 
         Health playerHealth = player.GetComponent<Health>();
 
-        playerHealth.DealDamage(damageDealt);
+        playerHealth.DealDamage(_damageDealt);
 
         if (playerHealth.IsDead())
         {
@@ -56,7 +49,7 @@ public class DamageDealer : MonoBehaviour
     {
         Health blockHealth = block.GetComponent<Health>();
 
-        blockHealth.DealDamage(damageDealt);
+        blockHealth.DealDamage(_damageDealt);
 
         if (blockHealth.IsDead())
         {
@@ -66,5 +59,11 @@ public class DamageDealer : MonoBehaviour
         {
             block.GetComponent<Crack>().ChangeState();
         }
+    }
+
+    private static bool IsOfBlockType(Collision2D collision)
+    {
+        return collision.gameObject.CompareTag("Block") || collision.gameObject.CompareTag("Skull")
+                     || collision.gameObject.CompareTag("Space Ship");
     }
 }

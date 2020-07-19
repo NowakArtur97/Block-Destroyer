@@ -3,31 +3,22 @@
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private float health = 3;
+    private float _health = 4;
 
-    private float maxHealth;
+    private float _maxHealth { get; set; }
 
-    private void Start()
-    {
-        maxHealth = health;
-    }
+    private void Start() => _maxHealth = _health;
 
-    public void DealDamage(float damage) => health -= damage;
+    public void DealDamage(float damage) => _health -= damage;
 
-    public void RestoreMaxHealth() => health = maxHealth;
+    public void RestoreMaxHealth() => _health = _maxHealth;
 
     public void RestoreHeatlh(float healthRestored)
     {
-        if (maxHealth >= health + healthRestored)
-        {
-            health += healthRestored;
-        }
+        if (_maxHealth >= _health + healthRestored) _health += healthRestored;
     }
 
-    public float GetHealth()
-    {
-        return health;
-    }
+    public float GetHealth() => _health;
 
     public void Die()
     {
@@ -35,8 +26,5 @@ public class Health : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public bool IsDead()
-    {
-        return health <= 0;
-    }
+    public bool IsDead() => _health <= 0;
 }
