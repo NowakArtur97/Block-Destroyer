@@ -3,11 +3,11 @@
 public class Paddle : MonoBehaviour
 {
     [SerializeField]
-    private float paddleYPosition = 1f;
+    private float _paddleYPosition = 1f;
     [SerializeField]
-    private float minX = 1.4f;
+    private float _minX = 1.4f;
     [SerializeField]
-    private float maxX = 20f;
+    private float _maxX = 20f;
 
     private GameSession gameSession;
     private Ball ball;
@@ -26,17 +26,17 @@ public class Paddle : MonoBehaviour
 
     private void CalculatePaddleMinAndMaxPosition()
     {
-        minX = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        _minX = GetComponent<SpriteRenderer>().bounds.size.x / 2;
 
-        maxX = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)).x - minX;
+        _maxX = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)).x - _minX;
     }
 
     private void Update()
     {
         Vector3 mousePosInWorldUnits = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 paddlePosition = new Vector2(mousePosInWorldUnits.x, paddleYPosition);
+        Vector2 paddlePosition = new Vector2(mousePosInWorldUnits.x, _paddleYPosition);
 
-        paddlePosition.x = Mathf.Clamp(GetXPosition(paddlePosition), minX, maxX);
+        paddlePosition.x = Mathf.Clamp(GetXPosition(paddlePosition), _minX, _maxX);
         transform.position = paddlePosition;
     }
 

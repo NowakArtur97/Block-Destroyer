@@ -4,65 +4,58 @@ using UnityEngine;
 public class SpaceShipPathing : MonoBehaviour
 {
     [SerializeField]
-    private List<Transform> waypoints;
+    private List<Transform> _waypoints;
     [SerializeField]
-    private float movingSpeed = 10f;
+    private float _movingSpeed = 10f;
 
-    private int waypointIndex = 0;
+    private int _waypointIndex = 0;
 
-    private bool isMovingRight;
-    private bool isRightMainDirection;
+    private bool _isMovingRight;
+    private bool _isRightMainDirection;
 
     private void Start()
     {
-        transform.position = waypoints[waypointIndex].transform.position;
+        transform.position = _waypoints[_waypointIndex].transform.position;
 
-        isMovingRight = (transform.position - waypoints[waypointIndex + 1].transform.position).x < 0;
+        _isMovingRight = (transform.position - _waypoints[_waypointIndex + 1].transform.position).x < 0;
 
-        isRightMainDirection = isMovingRight;
+        _isRightMainDirection = _isMovingRight;
 
-        waypointIndex++;
+        _waypointIndex++;
 
-        if (!isRightMainDirection)
+        if (!_isRightMainDirection)
         {
             RotateShipToDirection();
         }
     }
 
-    private void Update()
-    {
-        MoveTo();
-    }
+    private void Update() => MoveTo();
 
     private void MoveTo()
     {
-        var targetPosition = waypoints[waypointIndex].transform.position;
+        Vector3 targetPosition = _waypoints[_waypointIndex].transform.position;
 
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movingSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, _movingSpeed * Time.deltaTime);
 
         if (transform.position == targetPosition)
         {
-            if (waypointIndex + 1 >= waypoints.Count || waypointIndex - 1 < 0)
+            if (_waypointIndex + 1 >= _waypoints.Count || _waypointIndex - 1 < 0)
             {
-                isMovingRight = !isMovingRight;
+                _isMovingRight = !_isMovingRight;
 
                 RotateShipToDirection();
             }
 
-            if (isMovingRight == isRightMainDirection)
+            if (_isMovingRight == _isRightMainDirection)
             {
-                waypointIndex++;
+                _waypointIndex++;
             }
             else
             {
-                waypointIndex--;
+                _waypointIndex--;
             }
         }
     }
 
-    private void RotateShipToDirection()
-    {
-        transform.RotateAround(transform.position, transform.up, 180f);
-    }
-
+    private void RotateShipToDirection() => transform.RotateAround(transform.position, transform.up, 180f);
 }

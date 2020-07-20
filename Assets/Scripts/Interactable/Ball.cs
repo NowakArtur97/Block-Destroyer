@@ -6,15 +6,15 @@ public class Ball : MonoBehaviour
     private const string ELECTRIFIED_ANIMATION_STATE = "IsElectrified";
 
     [SerializeField]
-    private float distanceFromPaddle = 0.5f;
+    private float _distanceFromPaddle = 0.5f;
     [SerializeField]
-    private float xPush = 1f;
+    private float _xPush = 1f;
     [SerializeField]
-    private float yPush = 15f;
+    private float _yPush = 15f;
     [SerializeField]
-    private AudioClip[] sounds;
+    private AudioClip[] _sounds;
 
-    private Vector2 ballToPaddleVector;
+    private Vector2 _ballToPaddleVector;
 
     private Paddle mainPaddle;
 
@@ -36,9 +36,9 @@ public class Ball : MonoBehaviour
 
         ballBody = transform.GetChild(0).gameObject;
 
-        ballToPaddleVector = new Vector2(mainPaddle.transform.position.x, mainPaddle.transform.position.y + distanceFromPaddle);
+        _ballToPaddleVector = new Vector2(mainPaddle.transform.position.x, mainPaddle.transform.position.y + _distanceFromPaddle);
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(_xPush, _yPush);
     }
 
     void Update()
@@ -48,25 +48,25 @@ public class Ball : MonoBehaviour
             if (!gameSession.HasGameStarted())
             {
                 LockBallToPaddle();
-            }
 
-            LaunchBall();
+                LaunchBall();
+            }
         }
     }
 
     private void LaunchBall()
     {
-        if (WasMouseButtonClicked() && !gameSession.HasGameStarted())
+        if (WasMouseButtonClicked())
         {
             gameSession.SetGameHasStarted(true);
 
-            GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(_xPush, _yPush);
         }
     }
 
     private void LockBallToPaddle()
     {
-        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, ballToPaddleVector.y);
+        Vector2 paddlePos = new Vector2(mainPaddle.transform.position.x, _ballToPaddleVector.y);
 
         transform.position = paddlePos;
     }
@@ -91,35 +91,19 @@ public class Ball : MonoBehaviour
         ballBody.transform.up = direction;
     }
 
-    public void ToggleBurning()
-    {
-        animator.SetBool(BURNING_ANIMATION_STATE, !IsBallBurning());
-    }
+    public void ToggleBurning() => animator.SetBool(BURNING_ANIMATION_STATE, !IsBallBurning());
 
-    public void ToggleElectrified()
-    {
-        animator.SetBool(ELECTRIFIED_ANIMATION_STATE, !IsBallElectrified());
-    }
-
+    public void ToggleElectrified() => animator.SetBool(ELECTRIFIED_ANIMATION_STATE, !IsBallElectrified());
 
     private void PlayRandomSound()
     {
-        AudioClip randomSound = sounds[Random.Range(0, sounds.Length)];
+        AudioClip randomSound = _sounds[Random.Range(0, _sounds.Length)];
         audioSource.PlayOneShot(randomSound);
     }
 
-    private bool IsBallBurning()
-    {
-        return animator.GetBool(BURNING_ANIMATION_STATE);
-    }
+    private bool IsBallBurning() => animator.GetBool(BURNING_ANIMATION_STATE);
 
-    private bool IsBallElectrified()
-    {
-        return animator.GetBool(ELECTRIFIED_ANIMATION_STATE);
-    }
+    private bool IsBallElectrified() => animator.GetBool(ELECTRIFIED_ANIMATION_STATE);
 
-    private static bool WasMouseButtonClicked()
-    {
-        return Input.GetMouseButtonDown(0);
-    }
+    private static bool WasMouseButtonClicked() => Input.GetMouseButtonDown(0);
 }

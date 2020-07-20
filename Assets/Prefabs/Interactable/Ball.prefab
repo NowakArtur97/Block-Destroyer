@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203208364}
   - component: {fileID: 1203208365}
+  - component: {fileID: 1142894077}
   m_Layer: 11
   m_Name: Point Light 2D
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.55
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000cde6b75a1945a00af927a0d46dcfccdb5797f100e79ac492a76c2726
   m_LightCookieSprite: {fileID: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.68
+  m_PointLightInnerRadius: 0.4
   m_PointLightOuterRadius: 0.86
   m_PointLightDistance: 3
   m_PointLightQuality: 1
@@ -72,6 +73,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1142894077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203208363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819df6d7e89a27e4b8ad280ee1b26d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeLeftUntillChange: 1
 --- !u!1 &5646853358821890210
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8950272d7c63aa478e6cba2d921721e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromPaddle: 0.5
-  xPush: 1
-  yPush: 15
-  sounds:
+  _distanceFromPaddle: 0.5
+  _xPush: 1
+  _yPush: 15
+  _sounds:
   - {fileID: 8300000, guid: 6f6a195723f717741adcb9ecb6e2e93f, type: 3}
   - {fileID: 8300000, guid: 7ea799fc4b5887042a2e75dbd4f30969, type: 3}
   - {fileID: 8300000, guid: 42fc26755f1660e498373ec0d6d610d5, type: 3}
@@ -222,8 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5282afbce9930e148906f50d11b46ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealt: 1
-  defaultDamageDealt: 1
+  _damageDealt: 1
 --- !u!50 &5646853359208604348
 Rigidbody2D:
   serializedVersion: 4

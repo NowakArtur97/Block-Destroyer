@@ -43,14 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577ac71acc7a9f546884d555618fcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyNewPowerUpDelay: 10
-  minSpawnDelay: 6
-  maxSpawnDelay: 8
-  minSpawnXPosition: 1
-  maxSpawnXPosition: 20
-  minSpawnYPosition: 5
-  maxSpawnYPosition: 10
-  powerUps:
+  _destroyNewPowerUpDelay: 10
+  _minSpawnDelay: 6
+  _maxSpawnDelay: 8
+  _minSpawnXPosition: 1
+  _maxSpawnXPosition: 20
+  _minSpawnYPosition: 5
+  _maxSpawnYPosition: 10
+  _powerUps:
   - {fileID: 2442008734852851712, guid: f46ec97bf1f36dc4b9e8279770fc38c2, type: 3}
   - {fileID: 2442008734852851712, guid: fb3e74ba8a65512449065b1502f8a8ca, type: 3}
   - {fileID: 2442008734852851712, guid: 4ea1bc8557b288746a3d53a5598ea29b, type: 3}
