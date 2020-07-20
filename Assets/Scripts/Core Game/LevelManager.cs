@@ -6,52 +6,46 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private Canvas menuCanvas;
 
-    private int currentSceneIndex;
+    private int _currentSceneIndex;
 
     private void Start()
     {
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void PlayLevel()
     {
         GameSession gameSession = FindObjectOfType<GameSession>();
-        gameSession.SetAutoPlayEnabled(false);
+        gameSession.IsAutoPlayEnabled = false;
         gameSession.InstantiateBlocks();
         menuCanvas.enabled = false;
     }
 
     public void LoadNextLevel()
     {
-        ++currentSceneIndex;
+        ++_currentSceneIndex;
 
-        if (SceneManager.sceneCountInBuildSettings <= currentSceneIndex)
+        if (SceneManager.sceneCountInBuildSettings <= _currentSceneIndex)
         {
-            currentSceneIndex = 0;
+            _currentSceneIndex = 0;
         }
 
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
     public void LoadPreviousLevel()
     {
-        --currentSceneIndex;
+        --_currentSceneIndex;
 
-        if (0 > currentSceneIndex)
+        if (0 > _currentSceneIndex)
         {
-            currentSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+            _currentSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         }
 
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(_currentSceneIndex);
     }
 
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(currentSceneIndex);
-    }
+    public void RestartLevel() => SceneManager.LoadScene(_currentSceneIndex);
 
-    public void QuiGame()
-    {
-        Application.Quit();
-    }
+    public void QuiGame() => Application.Quit();
 }

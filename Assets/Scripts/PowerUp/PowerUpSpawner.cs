@@ -28,7 +28,7 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (gameSession.HasGameStarted() && !_isSpawning)
+        if (gameSession.HasGameStarted && !_isSpawning)
         {
             StartCoroutine(SpawningCoroutine());
         }

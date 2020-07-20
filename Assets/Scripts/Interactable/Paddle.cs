@@ -18,7 +18,7 @@ public class Paddle : MonoBehaviour
 
         CalculatePaddleMinAndMaxPosition();
 
-        if (gameSession.IsAutoPlayEnabled())
+        if (gameSession.IsAutoPlayEnabled)
         {
             ball = FindObjectOfType<Ball>();
         }
@@ -42,7 +42,7 @@ public class Paddle : MonoBehaviour
 
     private float GetXPosition(Vector2 paddlePosition)
     {
-        if (gameSession.IsAutoPlayEnabled())
+        if (gameSession.IsAutoPlayEnabled)
         {
             return ball.transform.position.x;
         }

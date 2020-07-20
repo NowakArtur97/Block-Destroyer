@@ -4,33 +4,33 @@ using UnityEngine;
 public class GameSession : MonoBehaviour
 {
     [SerializeField]
-    private bool isAutoPlayEnabled = true;
+    public bool IsAutoPlayEnabled { get; set; } = true;
     [SerializeField]
-    private Ball ball;
+    private Ball _ball;
 
-    private bool hasGameStarted = false;
+    public bool HasGameStarted { get; set; } = false;
 
-    private int numberOfBreakableBlocks;
+    private int _numberOfBreakableBlocks;
 
-    private List<Block> allBlocks = new List<Block>();
+    private List<Block> _allBlocks = new List<Block>();
 
     public void LoadBlocks(Block block)
     {
-        numberOfBreakableBlocks++;
-        allBlocks.Add(block);
+        _numberOfBreakableBlocks++;
+        _allBlocks.Add(block);
     }
 
     public void BlockDestroyed()
     {
-        if (hasGameStarted)
+        if (HasGameStarted)
         {
-            numberOfBreakableBlocks--;
+            _numberOfBreakableBlocks--;
         }
     }
 
     private void Update()
     {
-        if (IsGameAWin() && hasGameStarted)
+        if (IsGameAWin() && HasGameStarted)
         {
             FindObjectOfType<LevelManager>().LoadNextLevel();
         }
@@ -38,14 +38,14 @@ public class GameSession : MonoBehaviour
 
     public void RestartGame()
     {
-        hasGameStarted = false;
+        HasGameStarted = false;
 
-        Instantiate(ball, new Vector3(1, 1, 0), Quaternion.identity);
+        Instantiate(_ball, new Vector3(1, 1, 0), Quaternion.identity);
     }
 
     public void InstantiateBlocks()
     {
-        foreach (Block block in allBlocks)
+        foreach (Block block in _allBlocks)
         {
             block.gameObject.SetActive(true);
             block.GetComponent<Health>()?.RestoreMaxHealth();
@@ -53,13 +53,5 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private bool IsGameAWin() => numberOfBreakableBlocks <= 0;
-
-    public bool IsAutoPlayEnabled() => isAutoPlayEnabled;
-
-    public void SetAutoPlayEnabled(bool value) => isAutoPlayEnabled = value;
-
-    public bool HasGameStarted() => hasGameStarted;
-
-    public void SetGameHasStarted(bool hasGameStarted) => this.hasGameStarted = hasGameStarted;
+    private bool IsGameAWin() => _numberOfBreakableBlocks <= 0;
 }

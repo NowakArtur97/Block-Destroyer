@@ -43,9 +43,9 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (!gameSession.IsAutoPlayEnabled())
+        if (!gameSession.IsAutoPlayEnabled)
         {
-            if (!gameSession.HasGameStarted())
+            if (!gameSession.HasGameStarted)
             {
                 LockBallToPaddle();
 
@@ -58,7 +58,7 @@ public class Ball : MonoBehaviour
     {
         if (WasMouseButtonClicked())
         {
-            gameSession.SetGameHasStarted(true);
+            gameSession.HasGameStarted = true;
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(_xPush, _yPush);
         }
@@ -73,7 +73,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameSession.HasGameStarted())
+        if (gameSession.HasGameStarted)
         {
             PlayRandomSound();
 
